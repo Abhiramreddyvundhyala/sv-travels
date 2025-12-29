@@ -30,7 +30,7 @@ import { AuthProvider } from './context/AuthContext';
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename="/sv-travels">
         <div className="flex flex-col min-h-screen">
           <Navbar />
           <main className="flex-grow">
