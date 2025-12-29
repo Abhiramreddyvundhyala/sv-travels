@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/sv-travels/static/css/main.9c2c1861.css",
+    "main.js": "/sv-travels/static/js/main.ae014ba6.js",
+    "index.html": "/sv-travels/index.html",
+    "main.9c2c1861.css.map": "/sv-travels/static/css/main.9c2c1861.css.map",
+    "main.ae014ba6.js.map": "/sv-travels/static/js/main.ae014ba6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9c2c1861.css",
+    "static/js/main.ae014ba6.js"
+  ]
+}
