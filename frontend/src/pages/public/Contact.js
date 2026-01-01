@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaClock } from 'react-icons/fa';
 import { settingsAPI } from '../../utils/api';
 
@@ -218,12 +219,12 @@ const Contact = () => {
           <p className="text-xl mb-8 text-teal-50">
             Fill out our quick booking form and we'll get back to you shortly
           </p>
-          <a
-            href="/booking"
+          <Link
+            to="/booking"
             className="bg-white text-teal-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-neutral-100 transition-all duration-300 shadow-xl inline-block"
           >
             Make a Booking
-          </a>
+          </Link>
         </div>
       </section>
     </div>

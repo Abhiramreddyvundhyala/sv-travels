@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { FaBus, FaUsers, FaSnowflake, FaCheckCircle } from 'react-icons/fa';
 import { vehicleAPI } from '../../utils/api';
 import { toast } from 'react-toastify';
@@ -160,12 +161,12 @@ const Fleet = () => {
                       </div>
                     )}
 
-                    <a
-                      href="/booking"
+                    <Link
+                      to="/booking"
                       className="block w-full text-center bg-teal-600 text-white py-3 rounded-lg font-semibold hover:bg-teal-700 transition-colors mt-4"
                     >
                       Enquire Now
-                    </a>
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -182,18 +183,18 @@ const Fleet = () => {
             Contact us and we'll help you select the perfect vehicle for your needs
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="/booking"
+            <Link
+              to="/booking"
               className="bg-white text-teal-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-neutral-100 transition-all duration-300 shadow-xl"
             >
               Book Now
-            </a>
-            <a
-              href="/contact"
+            </Link>
+            <Link
+              to="/contact"
               className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-teal-600 transition-all duration-300"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </section>

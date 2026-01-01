@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { FaUser, FaPhone, FaEnvelope, FaMapMarkerAlt, FaCalendar, FaPlus, FaTimes } from 'react-icons/fa';
 import { enquiryAPI, settingsAPI } from '../../utils/api';
 import { toast } from 'react-toastify';
@@ -484,12 +485,12 @@ const Booking = () => {
           <p className="text-xl mb-8 text-teal-50">
             Call us directly for instant booking confirmation
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="bg-white text-teal-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-neutral-100 transition-all duration-300 shadow-xl inline-block"
           >
             View Contact Details
-          </a>
+          </Link>
         </div>
       </section>
     </div>
