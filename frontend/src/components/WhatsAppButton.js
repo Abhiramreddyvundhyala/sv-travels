@@ -4,7 +4,7 @@ import { settingsAPI } from '../utils/api';
 
 const WhatsAppButton = () => {
   const [settings, setSettings] = useState({
-    whatsappNumber: '917780720178'
+    whatsappNumber: '919963107531'
   });
 
   useEffect(() => {

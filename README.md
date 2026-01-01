@@ -2,6 +2,14 @@
 
 A complete, production-ready full-stack web application for **SV Travels (Sri Venkateshwara Travels)**, offering bus and tempo traveller rental services for group travel, events, and tours across India.
 
+## 🌐 Live Demo
+
+- **Website**: [https://svtravels.online](https://svtravels.online)
+- **Admin Panel**: [https://svtravels.online/admin/login](https://svtravels.online/admin/login)
+- **Fallback URL**: [GitHub Pages](https://Abhiramreddyvundhyala.github.io/sv-travels)
+
+> **Note**: Custom domain setup instructions available in [CUSTOM_DOMAIN_SETUP.md](CUSTOM_DOMAIN_SETUP.md)
+
 ## 🚀 Features
 
 ### Public Website (Customer Side)
@@ -137,9 +145,9 @@ JWT_SECRET=your_secret_key_change_this_in_production
 JWT_EXPIRE=30d
 
 # Contact Details (Optional - can be updated from admin panel)
-CONTACT_PHONE=+91-7780720178
-WHATSAPP_NUMBER=917780720178
-CONTACT_EMAIL=info@svtravels.com
+CONTACT_PHONE=+91-99631 07531
+WHATSAPP_NUMBER=919963107531
+CONTACT_EMAIL=svtravelsonline@gmail.com
 OFFICE_ADDRESS=Bangalore, Karnataka, India
 ```
 
@@ -176,7 +184,7 @@ Then, register an admin account using an API tool like Postman or curl:
 # Body (JSON):
 {
   "username": "admin",
-  "email": "admin@svtravels.com",
+  "email": "svtravelsonline@gmail.com",
   "password": "admin123"
 }
 ```
@@ -387,8 +395,8 @@ Edit in `backend/.env` or through Admin Settings panel:
 ## 🤝 Support
 
 For issues or questions:
-- Email: admin@svtravels.com
-- Phone: +91-7780720178
+- Email: svtravelsonline@gmail.com
+- Phone: +91-99631 07531
 
 ## 📜 License
 

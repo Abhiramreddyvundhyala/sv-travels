@@ -13,15 +13,15 @@ const updateSettings = async () => {
 
     // Create new settings with correct phone number
     await Settings.create({
-      contactPhone: '+91-7780720178',
-      whatsappNumber: '917780720178',
-      contactEmail: 'info@svtravels.com',
-      officeAddress: 'Bangalore, Karnataka, India'
+      contactPhone: '+91-99631 07531',
+      whatsappNumber: '919963107531',
+      contactEmail: 'svtravelsonline@gmail.com',
+      officeAddress: 'Kothakotta Kurnool road vishweshwar petrol bunk beside 509381 pincode Wanaparthy district'
     });
 
     console.log('✅ Settings updated successfully');
-    console.log('   Phone: +91-7780720178');
-    console.log('   WhatsApp: 917780720178');
+    console.log('   Phone: +91-99631 07531');
+    console.log('   WhatsApp: 919963107531');
     console.log('✅ Done!');
     
     process.exit(0);

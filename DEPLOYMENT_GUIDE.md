@@ -1,9 +1,19 @@
 # 🚀 Deployment Guide - SV Travels
 
 This guide will walk you through deploying your SV Travels application:
-- **Backend**: Render
-- **Frontend**: GitHub Pages
+- **Backend**: Render (or any Node.js hosting)
+- **Frontend**: GitHub Pages with Custom Domain (svtravels.online)
 - **Database**: MongoDB Atlas
+
+## 🌐 Deployment Options
+
+### Option 1: Custom Domain (Recommended)
+- **URL**: https://svtravels.online
+- **Setup**: See [CUSTOM_DOMAIN_SETUP.md](CUSTOM_DOMAIN_SETUP.md) for detailed instructions
+
+### Option 2: GitHub Pages Default
+- **URL**: https://your-username.github.io/sv-travels
+- **Setup**: Follow this guide without custom domain configuration
 
 ---
 
@@ -13,6 +23,7 @@ This guide will walk you through deploying your SV Travels application:
 - GitHub account
 - Render account (free tier available at https://render.com)
 - MongoDB Atlas account (free tier available at https://www.mongodb.com/cloud/atlas)
+- **(Optional)** Domain name purchased (for custom domain)
 
 ---
 
@@ -95,10 +106,10 @@ FRONTEND_URL=https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME
 CLOUDINARY_CLOUD_NAME=your_cloud_name (if using Cloudinary)
 CLOUDINARY_API_KEY=your_api_key (if using Cloudinary)
 CLOUDINARY_API_SECRET=your_api_secret (if using Cloudinary)
-CONTACT_PHONE=+91-7780720178
-WHATSAPP_NUMBER=917780720178
-CONTACT_EMAIL=info@svtravels.com
-OFFICE_ADDRESS=Your office address
+CONTACT_PHONE=+91-99631 07531
+WHATSAPP_NUMBER=919963107531
+CONTACT_EMAIL=svtravelsonline@gmail.com
+OFFICE_ADDRESS=Kothakotta Kurnool road vishweshwar petrol bunk beside 509381 pincode Wanaparthy district
 ```
 
 **Important**: 

@@ -1,7 +1,7 @@
 # SV Travels - Admin Features Overview
 
 ## Login Credentials
-- **Email**: admin@svtravels.com
+- **Email**: svtravelsonline@gmail.com
 - **Password**: admin123
 
 ## Admin Pages & Features
@@ -193,7 +193,7 @@ JWT_EXPIRE=30d
 ## Testing Checklist
 
 ### ✅ Admin Dashboard
-- [x] Login with admin@svtravels.com / admin123
+- [x] Login with svtravelsonline@gmail.com / admin123
 - [x] View statistics cards
 - [x] View recent enquiries
 - [x] Navigate to management pages
@@ -259,7 +259,7 @@ JWT_EXPIRE=30d
 
 3. **Access Admin Panel**:
    - Navigate to: http://localhost:3000/admin/login
-   - Login with: admin@svtravels.com / admin123
+   - Login with: svtravelsonline@gmail.com / admin123
 
 4. **Manage Content**:
    - Add vehicles with images

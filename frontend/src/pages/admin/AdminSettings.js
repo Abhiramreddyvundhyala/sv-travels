@@ -117,7 +117,7 @@ const AdminSettings = () => {
                     value={settings.contactPhone}
                     onChange={handleSettingsChange}
                     className="input-field pl-10"
-                    placeholder="+91-7780720178"
+                    placeholder="+91-99631 07531"
                   />
                 </div>
               </div>
@@ -134,10 +134,10 @@ const AdminSettings = () => {
                     value={settings.whatsappNumber}
                     onChange={handleSettingsChange}
                     className="input-field pl-10"
-                    placeholder="917780720178"
+                    placeholder="919963107531"
                   />
                 </div>
-                <p className="text-sm text-neutral-500 mt-1">Enter with country code (e.g., 917780720178)</p>
+                <p className="text-sm text-neutral-500 mt-1">Enter with country code (e.g., 919963107531)</p>
               </div>
 
               <div>
@@ -152,7 +152,7 @@ const AdminSettings = () => {
                     value={settings.contactEmail}
                     onChange={handleSettingsChange}
                     className="input-field pl-10"
-                    placeholder="info@svtravels.com"
+                    placeholder="svtravelsonline@gmail.com"
                   />
                 </div>
               </div>
@@ -256,7 +256,7 @@ const AdminSettings = () => {
             </li>
             <li className="flex items-start">
               <span className="mr-2">•</span>
-              <span>WhatsApp number should include country code without + symbol (e.g., 917780720178)</span>
+              <span>WhatsApp number should include country code without + symbol (e.g., 919963107531)</span>
             </li>
             <li className="flex items-start">
               <span className="mr-2">•</span>

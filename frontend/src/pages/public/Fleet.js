@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBus, FaUsers, FaSnowflake, FaCheckCircle } from 'react-icons/fa';
+import { FaBus, FaUsers, FaSnowflake, FaCheckCircle, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { vehicleAPI } from '../../utils/api';
 import { toast } from 'react-toastify';
 import Loader from '../../components/Loader';
@@ -9,6 +9,7 @@ const Fleet = () => {
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('All');
+  const [currentImageIndex, setCurrentImageIndex] = useState({});
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -19,7 +20,14 @@ const Fleet = () => {
     try {
       const response = await vehicleAPI.getAll();
       if (response.data.success) {
-        setVehicles(response.data.vehicles.filter(v => v.availability));
+        const availableVehicles = response.data.vehicles.filter(v => v.availability);
+        setVehicles(availableVehicles);
+        // Initialize image index for each vehicle
+        const initialIndexes = {};
+        availableVehicles.forEach(vehicle => {
+          initialIndexes[vehicle._id] = 0;
+        });
+        setCurrentImageIndex(initialIndexes);
       }
     } catch (error) {
       console.error('Error fetching vehicles:', error);
@@ -38,6 +46,20 @@ const Fleet = () => {
     if (imagePath.startsWith('http')) return imagePath;
     const baseUrl = (process.env.REACT_APP_API_URL || 'http://localhost:5000').replace('/api', '');
     return `${baseUrl}${imagePath}`;
+  };
+
+  const handlePrevImage = (vehicleId, totalImages) => {
+    setCurrentImageIndex(prev => ({
+      ...prev,
+      [vehicleId]: prev[vehicleId] === 0 ? totalImages - 1 : prev[vehicleId] - 1
+    }));
+  };
+
+  const handleNextImage = (vehicleId, totalImages) => {
+    setCurrentImageIndex(prev => ({
+      ...prev,
+      [vehicleId]: prev[vehicleId] === totalImages - 1 ? 0 : prev[vehicleId] + 1
+    }));
   };
 
   if (loading) {
@@ -85,24 +107,73 @@ const Fleet = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredVehicles.map((vehicle) => (
-                <div key={vehicle._id} className="card overflow-hidden">
-                  {/* Vehicle Image */}
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={vehicle.images && vehicle.images.length > 0 
-                        ? getImageUrl(vehicle.images[0]) 
-                        : 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400'}
-                      alt={vehicle.vehicleName}
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                      onError={(e) => {
-                        e.target.src = 'https://via.placeholder.com/400x300?text=Vehicle';
-                      }}
-                    />
-                    <div className="absolute top-4 right-4 bg-teal-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      {vehicle.vehicleType}
+              {filteredVehicles.map((vehicle) => {
+                const vehicleImages = vehicle.images && vehicle.images.length > 0 
+                  ? vehicle.images 
+                  : ['https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400'];
+                const currentIndex = currentImageIndex[vehicle._id] || 0;
+                
+                return (
+                  <div key={vehicle._id} className="card overflow-hidden">
+                    {/* Vehicle Image Carousel */}
+                    <div className="relative h-64 overflow-hidden group">
+                      <img
+                        src={getImageUrl(vehicleImages[currentIndex])} 
+                        alt={`${vehicle.vehicleName} - Image ${currentIndex + 1}`}
+                        className="w-full h-full object-cover transition-transform duration-300"
+                        onError={(e) => {
+                          e.target.src = 'https://via.placeholder.com/400x300?text=Vehicle';
+                        }}
+                      />
+                      
+                      {/* Image Navigation Arrows - Only show if multiple images */}
+                      {vehicleImages.length > 1 && (
+                        <>
+                          <button
+                            onClick={() => handlePrevImage(vehicle._id, vehicleImages.length)}
+                            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-opacity-75"
+                            aria-label="Previous image"
+                          >
+                            <FaChevronLeft size={20} />
+                          </button>
+                          <button
+                            onClick={() => handleNextImage(vehicle._id, vehicleImages.length)}
+                            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-opacity-75"
+                            aria-label="Next image"
+                          >
+                            <FaChevronRight size={20} />
+                          </button>
+                          
+                          {/* Image Indicators */}
+                          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1">
+                            {vehicleImages.map((_, index) => (
+                              <button
+                                key={index}
+                                onClick={() => setCurrentImageIndex(prev => ({
+                                  ...prev,
+                                  [vehicle._id]: index
+                                }))}
+                                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                  index === currentIndex 
+                                    ? 'bg-white w-6' 
+                                    : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+                                }`}
+                                aria-label={`Go to image ${index + 1}`}
+                              />
+                            ))}
+                          </div>
+                          
+                          {/* Image Counter */}
+                          <div className="absolute top-2 left-2 bg-black bg-opacity-60 text-white px-2 py-1 rounded text-xs">
+                            {currentIndex + 1} / {vehicleImages.length}
+                          </div>
+                        </>
+                      )}
+                      
+                      <div className="absolute top-4 right-4 bg-teal-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        {vehicle.vehicleType}
+                      </div>
                     </div>
-                  </div>
 
                   {/* Vehicle Details */}
                   <div className="p-6">
@@ -170,7 +241,8 @@ const Fleet = () => {
                     </Link>
                   </div>
                 </div>
-              ))}
+              );
+            })}
             </div>
           )}
         </div>

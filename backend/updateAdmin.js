@@ -14,14 +14,14 @@ const updateAdmin = async () => {
     // Create new admin with email as login
     const admin = new Admin({
       username: 'admin',
-      email: 'admin@svtravels.com',
+      email: 'svtravelsonline@gmail.com',
       password: 'admin123',
       role: 'admin'
     });
 
     await admin.save();
     console.log('✅ New admin created successfully');
-    console.log('   Email: admin@svtravels.com');
+    console.log('   Email: svtravelsonline@gmail.com');
     console.log('   Password: admin123');
     
     mongoose.connection.close();

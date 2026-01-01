@@ -20,7 +20,7 @@ const Booking = () => {
   const [tourDestinations, setTourDestinations] = useState([]);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [whatsappNumber, setWhatsappNumber] = useState('917780720178');
+  const [whatsappNumber, setWhatsappNumber] = useState('919963107531');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -235,7 +235,7 @@ const Booking = () => {
                         onChange={handleChange}
                         required
                         className="input-field pl-10"
-                        placeholder="+91-7780720178"
+                        placeholder="+91-99631 07531"
                       />
                     </div>
                   </div>

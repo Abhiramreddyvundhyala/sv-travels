@@ -5,10 +5,10 @@ import { settingsAPI } from '../utils/api';
 
 const Footer = () => {
   const [settings, setSettings] = useState({
-    contactPhone: '+91-7780720178',
-    whatsappNumber: '917780720178',
-    contactEmail: 'info@svtravels.com',
-    officeAddress: 'Bangalore, Karnataka, India'
+    contactPhone: '+91-99631 07531',
+    whatsappNumber: '919963107531',
+    contactEmail: 'svtravelsonline@gmail.com',
+    officeAddress: 'Kothakotta Kurnool road vishweshwar petrol bunk beside 509381 pincode Wanaparthy district'
   });
 
   useEffect(() => {

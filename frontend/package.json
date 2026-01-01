@@ -2,7 +2,7 @@
   "name": "sv-travels-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Abhiramreddyvundhyala.github.io/sv-travels",
+  "homepage": "https://svtravels.online",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "axios": "^1.6.2",

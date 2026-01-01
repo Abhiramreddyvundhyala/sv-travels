@@ -30,7 +30,7 @@ import { AuthProvider } from './context/AuthContext';
 function App() {
   return (
     <AuthProvider>
-      <Router basename="/sv-travels">
+      <Router basename={process.env.NODE_ENV === 'production' ? '/sv-travels' : '/'}>
         <div className="flex flex-col min-h-screen">
           <Navbar />
           <main className="flex-grow">

@@ -79,7 +79,7 @@ SV/
 ## 🔑 Default Admin Credentials
 
 After deployment, login with:
-- **Email**: admin@svtravels.com
+- **Email**: svtravelsonline@gmail.com
 - **Password**: admin123
 
 ⚠️ **IMPORTANT**: Change these credentials immediately after first login!

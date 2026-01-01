@@ -3,19 +3,19 @@ const mongoose = require('mongoose');
 const settingsSchema = new mongoose.Schema({
   contactPhone: {
     type: String,
-    default: '+91-7780720178'
+    default: '+91-99631 07531'
   },
   whatsappNumber: {
     type: String,
-    default: '917780720178'
+    default: '919963107531'
   },
   contactEmail: {
     type: String,
-    default: 'info@svtravels.com'
+    default: 'svtravelsonline@gmail.com'
   },
   officeAddress: {
     type: String,
-    default: 'Bangalore, Karnataka, India'
+    default: 'Kothakotta Kurnool road vishweshwar petrol bunk beside 509381 pincode Wanaparthy district'
   },
   updatedAt: {
     type: Date,

@@ -83,7 +83,7 @@ const AdminLogin = () => {
                   onChange={handleChange}
                   required
                   className="input-field pl-10"
-                  placeholder="admin@svtravels.com"
+                  placeholder="svtravelsonline@gmail.com"
                   autoComplete="username"
                 />
               </div>

@@ -53,7 +53,7 @@
 <p><em>Received at: {{submission_time}}</em></p>
 ```
 
-**To Email:** Your admin email (e.g., `info@svtravels.com`)
+**To Email:** Your admin email (e.g., `svtravelsonline@gmail.com`)
 
 4. Click **Save**
 5. Note down your **Template ID** (e.g., `template_xyz789`)
