@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/sv-travels/static/css/main.9c2c1861.css",
-    "main.js": "/sv-travels/static/js/main.0ed3886e.js",
+    "main.js": "/sv-travels/static/js/main.7c404d5d.js",
     "index.html": "/sv-travels/index.html",
     "main.9c2c1861.css.map": "/sv-travels/static/css/main.9c2c1861.css.map",
-    "main.0ed3886e.js.map": "/sv-travels/static/js/main.0ed3886e.js.map"
+    "main.7c404d5d.js.map": "/sv-travels/static/js/main.7c404d5d.js.map"
   },
   "entrypoints": [
     "static/css/main.9c2c1861.css",
-    "static/js/main.0ed3886e.js"
+    "static/js/main.7c404d5d.js"
   ]
 }
