@@ -158,14 +158,12 @@ const AdminDashboard = () => {
             >
               Settings
             </Link>
-            <a
-              href="/"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/"
               className="bg-neutral-600 text-white p-4 rounded-lg text-center font-semibold hover:bg-neutral-700 transition-colors"
             >
               View Website
-            </a>
+            </Link>
           </div>
         </div>
 

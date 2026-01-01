@@ -182,7 +182,7 @@ const VehicleManagement = () => {
                 {vehicle.images && vehicle.images.length > 0 ? (
                   <>
                     <img
-                      src={`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${vehicle.images[currentIndex]}`}
+                      src={`${(process.env.REACT_APP_API_URL || 'http://localhost:5000').replace('/api', '')}${vehicle.images[currentIndex]}`}
                       alt={vehicle.vehicleName}
                       className="w-full h-full object-cover transition-all duration-300"
                       onError={(e) => {

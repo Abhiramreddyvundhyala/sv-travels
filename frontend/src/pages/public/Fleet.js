@@ -36,7 +36,8 @@ const Fleet = () => {
   const getImageUrl = (imagePath) => {
     if (!imagePath) return 'https://via.placeholder.com/400x300?text=No+Image';
     if (imagePath.startsWith('http')) return imagePath;
-    return `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${imagePath}`;
+    const baseUrl = (process.env.REACT_APP_API_URL || 'http://localhost:5000').replace('/api', '');
+    return `${baseUrl}${imagePath}`;
   };
 
   if (loading) {
