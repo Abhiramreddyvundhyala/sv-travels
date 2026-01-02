@@ -49,7 +49,13 @@ const VehicleManagement = () => {
   };
 
   const handleImageChange = (e) => {
-    setImageFiles(Array.from(e.target.files));
+    const files = Array.from(e.target.files);
+    if (files.length > 10) {
+      toast.error('Maximum 10 images allowed at once');
+      e.target.value = '';
+      return;
+    }
+    setImageFiles(files);
   };
 
   const handleSubmit = async (e) => {
@@ -182,7 +188,7 @@ const VehicleManagement = () => {
                 {vehicle.images && vehicle.images.length > 0 ? (
                   <>
                     <img
-                      src={`${(process.env.REACT_APP_API_URL || 'http://localhost:5000').replace('/api', '')}${vehicle.images[currentIndex]}`}
+                      src={vehicle.images[currentIndex].startsWith('http') ? vehicle.images[currentIndex] : `${(process.env.REACT_APP_API_URL || 'http://localhost:5000').replace('/api', '')}${vehicle.images[currentIndex]}`}
                       alt={vehicle.vehicleName}
                       className="w-full h-full object-cover transition-all duration-300"
                       onError={(e) => {
@@ -460,7 +466,7 @@ const VehicleManagement = () => {
                     {editingVehicle.images.map((image, index) => (
                       <div key={index} className="relative group">
                         <img
-                          src={`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${image}`}
+                          src={image.startsWith('http') ? image : `${(process.env.REACT_APP_API_URL || 'http://localhost:5000').replace('/api', '')}${image}`}
                           alt={`Vehicle ${index + 1}`}
                           className="w-full h-24 object-cover rounded-lg"
                         />
@@ -502,7 +508,7 @@ const VehicleManagement = () => {
                   onChange={handleImageChange}
                   className="input-field"
                 />
-                <p className="text-sm text-gray-500 mt-1">You can upload multiple images (max 5 total)</p>
+                <p className="text-sm text-gray-500 mt-1">You can upload up to 10 images at once</p>
               </div>
 
               <div className="flex gap-4 pt-4">

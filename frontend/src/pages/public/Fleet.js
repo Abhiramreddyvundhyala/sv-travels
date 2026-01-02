@@ -42,8 +42,10 @@ const Fleet = () => {
     : vehicles.filter(v => v.vehicleType === filter);
 
   const getImageUrl = (imagePath) => {
-    if (!imagePath) return 'https://via.placeholder.com/400x300?text=No+Image';
+    if (!imagePath) return 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400&h=300&fit=crop';
+    // If it's already a full URL (Cloudinary or external), return as is
     if (imagePath.startsWith('http')) return imagePath;
+    // Legacy support for old local paths
     const baseUrl = (process.env.REACT_APP_API_URL || 'http://localhost:5000').replace('/api', '');
     return `${baseUrl}${imagePath}`;
   };

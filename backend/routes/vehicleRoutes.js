@@ -4,8 +4,7 @@ const { body, validationResult } = require('express-validator');
 const Vehicle = require('../models/Vehicle');
 const authMiddleware = require('../middleware/authMiddleware');
 const upload = require('../middleware/upload');
-const path = require('path');
-const fs = require('fs');
+const { cloudinary } = require('../config/cloudinary');
 
 // @route   GET /api/vehicles
 // @desc    Get all vehicles
@@ -51,7 +50,7 @@ router.get('/:id', async (req, res) => {
 // @route   POST /api/vehicles
 // @desc    Create new vehicle
 // @access  Private (Admin)
-router.post('/', authMiddleware, upload.array('images', 5), [
+router.post('/', authMiddleware, upload.array('images', 10), [
   body('vehicleName').trim().notEmpty().withMessage('Vehicle name is required'),
   body('vehicleType').isIn(['Bus', 'Tempo Traveller']).withMessage('Invalid vehicle type'),
   body('seatingCapacity').isInt({ min: 1 }).withMessage('Valid seating capacity is required'),
@@ -86,9 +85,9 @@ router.post('/', authMiddleware, upload.array('images', 5), [
         : req.body.idealFor;
     }
 
-    // Handle uploaded images
+    // Handle uploaded images from Cloudinary
     if (req.files && req.files.length > 0) {
-      vehicleData.images = req.files.map(file => `/uploads/vehicles/${file.filename}`);
+      vehicleData.images = req.files.map(file => file.path); // Cloudinary returns full URL in file.path
     }
 
     const vehicle = new Vehicle(vehicleData);
@@ -108,7 +107,7 @@ router.post('/', authMiddleware, upload.array('images', 5), [
 // @route   PUT /api/vehicles/:id
 // @desc    Update vehicle
 // @access  Private (Admin)
-router.put('/:id', authMiddleware, upload.array('images', 5), async (req, res) => {
+router.put('/:id', authMiddleware, upload.array('images', 10), async (req, res) => {
   try {
     console.log('Update vehicle request for ID:', req.params.id);
     console.log('Admin authenticated:', req.admin.email);
@@ -146,9 +145,9 @@ router.put('/:id', authMiddleware, upload.array('images', 5), async (req, res) =
         : req.body.idealFor;
     }
 
-    // Handle new uploaded images
+    // Handle new uploaded images from Cloudinary
     if (req.files && req.files.length > 0) {
-      const newImages = req.files.map(file => `/uploads/vehicles/${file.filename}`);
+      const newImages = req.files.map(file => file.path); // Cloudinary returns full URL
       vehicle.images = [...vehicle.images, ...newImages];
       console.log('Added new images:', newImages);
     }
@@ -185,19 +184,18 @@ router.delete('/:id', authMiddleware, async (req, res) => {
       });
     }
 
-    // Delete associated images
+    // Delete associated images from Cloudinary
     if (vehicle.images && vehicle.images.length > 0) {
-      vehicle.images.forEach(imagePath => {
-        const fullPath = path.join(__dirname, '..', imagePath);
-        if (fs.existsSync(fullPath)) {
-          try {
-            fs.unlinkSync(fullPath);
-            console.log('Deleted image:', fullPath);
-          } catch (err) {
-            console.log('Error deleting image:', err.message);
-          }
+      for (const imageUrl of vehicle.images) {
+        try {
+          // Extract public_id from Cloudinary URL
+          const publicId = imageUrl.split('/').slice(-2).join('/').split('.')[0];
+          await cloudinary.uploader.destroy(publicId);
+          console.log('Deleted image from Cloudinary:', publicId);
+        } catch (err) {
+          console.log('Error deleting image from Cloudinary:', err.message);
         }
-      });
+      }
     }
 
     await Vehicle.findByIdAndDelete(req.params.id);
@@ -231,10 +229,13 @@ router.delete('/:id/images', authMiddleware, async (req, res) => {
     // Remove image from array
     vehicle.images = vehicle.images.filter(img => img !== imagePath);
     
-    // Delete physical file
-    const fullPath = path.join(__dirname, '..', imagePath);
-    if (fs.existsSync(fullPath)) {
-      fs.unlinkSync(fullPath);
+    // Delete from Cloudinary
+    try {
+      const publicId = imagePath.split('/').slice(-2).join('/').split('.')[0];
+      await cloudinary.uploader.destroy(publicId);
+      console.log('Deleted image from Cloudinary:', publicId);
+    } catch (err) {
+      console.log('Error deleting from Cloudinary:', err.message);
     }
 
     await vehicle.save();
