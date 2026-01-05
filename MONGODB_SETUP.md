@@ -87,7 +87,6 @@
 
    **Final format should be**:
    ```
-   mongodb+srv://svtravelsadmin:MySecurePass123@sv-travels-cluster.abc12.mongodb.net/sv-travels
    ```
 
 ---
