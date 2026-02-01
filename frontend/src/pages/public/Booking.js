@@ -21,6 +21,7 @@ const Booking = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [whatsappNumber, setWhatsappNumber] = useState('919963107531');
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -39,10 +40,106 @@ const Booking = () => {
   };
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
+    
+    // Clear error for this field when user starts typing
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: ''
+      });
+    }
+  };
+
+  // Validation function
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Name validation
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters';
+    } else if (formData.name.trim().length > 100) {
+      newErrors.name = 'Name must not exceed 100 characters';
+    }
+
+    // Phone validation
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else if (!/^[6-9]\d{9}$/.test(formData.phone.replace(/[\s\-\+]/g, ''))) {
+      newErrors.phone = 'Please enter a valid 10-digit Indian mobile number (starting with 6-9)';
+    }
+
+    // Email validation (optional but validate if provided)
+    if (formData.email.trim()) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        newErrors.email = 'Please enter a valid email address';
+      } else if (formData.email.length > 100) {
+        newErrors.email = 'Email must not exceed 100 characters';
+      }
+    }
+
+    // Pickup location validation
+    if (!formData.pickupLocation.trim()) {
+      newErrors.pickupLocation = 'Starting point is required';
+    } else if (formData.pickupLocation.trim().length < 2) {
+      newErrors.pickupLocation = 'Starting point must be at least 2 characters';
+    } else if (formData.pickupLocation.trim().length > 200) {
+      newErrors.pickupLocation = 'Starting point must not exceed 200 characters';
+    }
+
+    // Drop location validation
+    if (!formData.dropLocation.trim()) {
+      newErrors.dropLocation = 'Ending point is required';
+    } else if (formData.dropLocation.trim().length < 2) {
+      newErrors.dropLocation = 'Ending point must be at least 2 characters';
+    } else if (formData.dropLocation.trim().length > 200) {
+      newErrors.dropLocation = 'Ending point must not exceed 200 characters';
+    }
+
+    // Start date validation
+    if (!formData.startDate) {
+      newErrors.startDate = 'Start date is required';
+    } else {
+      const selectedDate = new Date(formData.startDate);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      if (selectedDate < today) {
+        newErrors.startDate = 'Start date cannot be in the past';
+      }
+    }
+
+    // End date validation (optional but validate if provided)
+    if (formData.endDate) {
+      const startDate = new Date(formData.startDate);
+      const endDate = new Date(formData.endDate);
+      if (endDate < startDate) {
+        newErrors.endDate = 'End date must be after start date';
+      }
+    }
+
+    // Number of passengers validation
+    if (!formData.numberOfPassengers) {
+      newErrors.numberOfPassengers = 'Number of passengers is required';
+    } else if (parseInt(formData.numberOfPassengers) < 1) {
+      newErrors.numberOfPassengers = 'At least 1 passenger is required';
+    } else if (parseInt(formData.numberOfPassengers) > 100) {
+      newErrors.numberOfPassengers = 'Maximum 100 passengers allowed';
+    }
+
+    // Message validation (optional but validate length if provided)
+    if (formData.message && formData.message.length > 1000) {
+      newErrors.message = 'Message must not exceed 1000 characters';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   // Create WhatsApp message
@@ -122,6 +219,13 @@ const Booking = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validate form before submission
+    if (!validateForm()) {
+      toast.error('Please fix the errors in the form');
+      return;
+    }
+    
     setLoading(true);
 
     try {
@@ -154,6 +258,7 @@ const Booking = () => {
           message: ''
         });
         setTourDestinations([]);
+        setErrors({});
 
         // Reset submitted state after 5 seconds
         setTimeout(() => setSubmitted(false), 5000);
@@ -161,6 +266,15 @@ const Booking = () => {
     } catch (error) {
       const errorMsg = error.response?.data?.message || 'Failed to submit enquiry. Please try again.';
       toast.error(errorMsg);
+      
+      // If backend returns validation errors, show them
+      if (error.response?.data?.errors) {
+        const backendErrors = {};
+        error.response.data.errors.forEach(err => {
+          backendErrors[err.path] = err.msg;
+        });
+        setErrors(backendErrors);
+      }
     } finally {
       setLoading(false);
     }
@@ -179,8 +293,8 @@ const Booking = () => {
       {/* Header Section */}
       <section className="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">
         <div className="container-custom text-center">
-          <h1 className="text-5xl font-bold mb-4">Book Your Journey</h1>
-          <p className="text-xl text-teal-50">Fill out the form below and we'll get back to you shortly</p>
+          <h1 className="text-5xl font-bold mb-4">Book Your India Tour from Hyderabad</h1>
+          <p className="text-xl text-teal-50">Bus & Tempo Traveller Booking | Hyderabad & Mahabubnagar to All India | Best Rates</p>
         </div>
       </section>
 
@@ -215,11 +329,11 @@ const Booking = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        required
-                        className="input-field pl-10"
+                        className={`input-field pl-10 ${errors.name ? 'border-red-500' : ''}`}
                         placeholder="Enter your name"
                       />
                     </div>
+                    {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
                   </div>
 
                   <div>
@@ -233,11 +347,11 @@ const Booking = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        required
-                        className="input-field pl-10"
+                        className={`input-field pl-10 ${errors.phone ? 'border-red-500' : ''}`}
                         placeholder="+91-99631 07531"
                       />
                     </div>
+                    {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
                   </div>
                 </div>
 
@@ -253,10 +367,11 @@ const Booking = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="input-field pl-10"
+                      className={`input-field pl-10 ${errors.email ? 'border-red-500' : ''}`}
                       placeholder="your.email@example.com"
                     />
                   </div>
+                  {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                 </div>
 
                 {/* Starting Point */}
@@ -271,11 +386,11 @@ const Booking = () => {
                       name="pickupLocation"
                       value={formData.pickupLocation}
                       onChange={handleChange}
-                      required
-                      className="input-field pl-10"
+                      className={`input-field pl-10 ${errors.pickupLocation ? 'border-red-500' : ''}`}
                       placeholder="Enter starting location"
                     />
                   </div>
+                  {errors.pickupLocation && <p className="text-red-500 text-sm mt-1">{errors.pickupLocation}</p>}
                 </div>
 
                 {/* Ending Point */}
@@ -290,11 +405,11 @@ const Booking = () => {
                       name="dropLocation"
                       value={formData.dropLocation}
                       onChange={handleChange}
-                      required
-                      className="input-field pl-10"
+                      className={`input-field pl-10 ${errors.dropLocation ? 'border-red-500' : ''}`}
                       placeholder="Enter ending location"
                     />
                   </div>
+                  {errors.dropLocation && <p className="text-red-500 text-sm mt-1">{errors.dropLocation}</p>}
                 </div>
 
                 {/* Tour Destinations */}
@@ -359,11 +474,11 @@ const Booking = () => {
                         name="startDate"
                         value={formData.startDate}
                         onChange={handleChange}
-                        required
                         min={getTodayDate()}
-                        className="input-field pl-10"
+                        className={`input-field pl-10 ${errors.startDate ? 'border-red-500' : ''}`}
                       />
                     </div>
+                    {errors.startDate && <p className="text-red-500 text-sm mt-1">{errors.startDate}</p>}
                   </div>
 
                   <div>
@@ -378,9 +493,10 @@ const Booking = () => {
                         value={formData.endDate}
                         onChange={handleChange}
                         min={formData.startDate || getTodayDate()}
-                        className="input-field pl-10"
+                        className={`input-field pl-10 ${errors.endDate ? 'border-red-500' : ''}`}
                       />
                     </div>
+                    {errors.endDate && <p className="text-red-500 text-sm mt-1">{errors.endDate}</p>}
                   </div>
                 </div>
 
@@ -396,27 +512,30 @@ const Booking = () => {
                       name="numberOfPassengers"
                       value={formData.numberOfPassengers}
                       onChange={handleChange}
-                      required
                       min="1"
-                      className="input-field pl-10"
+                      max="100"
+                      className={`input-field pl-10 ${errors.numberOfPassengers ? 'border-red-500' : ''}`}
                       placeholder="Number of passengers"
                     />
                   </div>
+                  {errors.numberOfPassengers && <p className="text-red-500 text-sm mt-1">{errors.numberOfPassengers}</p>}
                 </div>
 
                 {/* Message */}
                 <div>
                   <label className="block text-neutral-700 font-semibold mb-2">
-                    Additional Message
+                    Additional Message {formData.message && <span className="text-sm text-neutral-500">({formData.message.length}/1000)</span>}
                   </label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     rows="4"
-                    className="input-field resize-none"
+                    maxLength="1000"
+                    className={`input-field resize-none ${errors.message ? 'border-red-500' : ''}`}
                     placeholder="Any special requirements or questions..."
                   ></textarea>
+                  {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
                 </div>
 
                 {/* Submit Button */}

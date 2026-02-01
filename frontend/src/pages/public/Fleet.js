@@ -73,8 +73,8 @@ const Fleet = () => {
       {/* Header Section */}
       <section className="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">
         <div className="container-custom text-center">
-          <h1 className="text-5xl font-bold mb-4">Our Fleet</h1>
-          <p className="text-xl text-teal-50">Explore Our Range of Well-Maintained Vehicles</p>
+          <h1 className="text-5xl font-bold mb-4">Our Bus & Tempo Traveller Fleet - Hyderabad & Mahabubnagar</h1>
+          <p className="text-xl text-teal-50">Well-Maintained Vehicles for Tours Across India | Spacious & Comfortable</p>
         </div>
       </section>
 

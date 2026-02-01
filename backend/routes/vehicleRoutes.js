@@ -109,14 +109,9 @@ router.post('/', authMiddleware, upload.array('images', 10), [
 // @access  Private (Admin)
 router.put('/:id', authMiddleware, upload.array('images', 10), async (req, res) => {
   try {
-    console.log('Update vehicle request for ID:', req.params.id);
-    console.log('Admin authenticated:', req.admin.email);
-    console.log('Request body:', req.body);
-    
     const vehicle = await Vehicle.findById(req.params.id);
     
     if (!vehicle) {
-      console.log('Vehicle not found');
       return res.status(404).json({ 
         success: false, 
         message: 'Vehicle not found' 
@@ -147,13 +142,11 @@ router.put('/:id', authMiddleware, upload.array('images', 10), async (req, res) 
 
     // Handle new uploaded images from Cloudinary
     if (req.files && req.files.length > 0) {
-      const newImages = req.files.map(file => file.path); // Cloudinary returns full URL
+      const newImages = req.files.map(file => file.path);
       vehicle.images = [...vehicle.images, ...newImages];
-      console.log('Added new images:', newImages);
     }
 
     await vehicle.save();
-    console.log('Vehicle updated successfully');
 
     res.json({
       success: true,
@@ -161,8 +154,8 @@ router.put('/:id', authMiddleware, upload.array('images', 10), async (req, res) 
       vehicle
     });
   } catch (error) {
-    console.error('Update vehicle error:', error);
-    res.status(500).json({ success: false, message: 'Server error', error: error.message });
+    console.error('Update vehicle error:', error.message);
+    res.status(500).json({ success: false, message: 'Server error' });
   }
 });
 
@@ -171,13 +164,9 @@ router.put('/:id', authMiddleware, upload.array('images', 10), async (req, res) 
 // @access  Private (Admin)
 router.delete('/:id', authMiddleware, async (req, res) => {
   try {
-    console.log('Delete vehicle request for ID:', req.params.id);
-    console.log('Admin authenticated:', req.admin.email);
-    
     const vehicle = await Vehicle.findById(req.params.id);
     
     if (!vehicle) {
-      console.log('Vehicle not found');
       return res.status(404).json({ 
         success: false, 
         message: 'Vehicle not found' 
@@ -191,23 +180,21 @@ router.delete('/:id', authMiddleware, async (req, res) => {
           // Extract public_id from Cloudinary URL
           const publicId = imageUrl.split('/').slice(-2).join('/').split('.')[0];
           await cloudinary.uploader.destroy(publicId);
-          console.log('Deleted image from Cloudinary:', publicId);
         } catch (err) {
-          console.log('Error deleting image from Cloudinary:', err.message);
+          console.error('Error deleting image from Cloudinary:', err.message);
         }
       }
     }
 
     await Vehicle.findByIdAndDelete(req.params.id);
-    console.log('Vehicle deleted successfully');
 
     res.json({
       success: true,
       message: 'Vehicle deleted successfully'
     });
   } catch (error) {
-    console.error('Delete vehicle error:', error);
-    res.status(500).json({ success: false, message: 'Server error', error: error.message });
+    console.error('Delete vehicle error:', error.message);
+    res.status(500).json({ success: false, message: 'Server error' });
   }
 });
 

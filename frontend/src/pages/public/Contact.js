@@ -32,8 +32,8 @@ const Contact = () => {
       {/* Header Section */}
       <section className="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">
         <div className="container-custom text-center">
-          <h1 className="text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-xl text-teal-50">We're Here to Help - Get in Touch Today</p>
+          <h1 className="text-5xl font-bold mb-4">Contact SV Travels - Hyderabad & Mahabubnagar</h1>
+          <p className="text-xl text-teal-50">Book Bus & Tempo Traveller for India Tours | 24/7 Service | Call +91-99631 07531</p>
         </div>
       </section>
 

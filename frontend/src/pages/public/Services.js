@@ -10,33 +10,33 @@ const Services = () => {
   const useCases = [
     {
       icon: <FaUsers className="text-4xl text-amber-600" />,
-      title: 'Weddings & Events',
-      description: 'Make your special day even more memorable with our comfortable and spacious vehicles for guest transportation.'
+      title: 'Wedding & Event Transportation (Hyderabad)',
+      description: 'Make your special day memorable with our spacious buses for guest transportation from Hyderabad, Mahabubnagar to any venue across India.'
     },
     {
       icon: <FaBus className="text-4xl text-teal-600" />,
-      title: 'Corporate Trips',
-      description: 'Professional transportation solutions for corporate events, team outings, and business conferences.'
+      title: 'Corporate Trips & Team Outings',
+      description: 'Professional bus and tempo traveller rental for corporate events, conferences, and team outings from Hyderabad to all India destinations.'
     },
     {
       icon: <FaRoute className="text-4xl text-teal-600" />,
-      title: 'School & College Tours',
-      description: 'Safe and reliable transportation for educational trips, excursions, and student events.'
+      title: 'School & College Educational Tours',
+      description: 'Safe and reliable transportation for educational trips, excursions from Telangana to tourist and educational destinations across India.'
     },
     {
       icon: <FaShieldAlt className="text-4xl text-amber-600" />,
-      title: 'Pilgrimage Travel',
-      description: 'Comfortable journey to sacred destinations with our well-maintained buses and tempo travellers.'
+      title: 'Pilgrimage Tours (Tirupati, Shirdi, Varanasi)',
+      description: 'Comfortable pilgrimage travel from Hyderabad/Mahabubnagar to Tirupati, Shirdi, Varanasi, Puri, and other sacred destinations.'
     },
     {
       icon: <FaUsers className="text-4xl text-teal-600" />,
-      title: 'Family Group Travel',
-      description: 'Perfect for family reunions, vacations, and group outings with your loved ones.'
+      title: 'Family Group Travel & Vacations',
+      description: 'Perfect for family reunions and group vacations from Hyderabad to Goa, Kerala, Rajasthan, Kashmir, and popular tourist destinations.'
     },
     {
       icon: <FaClock className="text-4xl text-teal-600" />,
-      title: 'Long-Distance Tours',
-      description: 'Explore destinations far and wide with our comfortable vehicles designed for long journeys.'
+      title: 'Long-Distance India Tours',
+      description: 'Explore India with our comfortable buses designed for long journeys - North India tours, South India tours, complete India packages.'
     }
   ];
 
@@ -60,8 +60,8 @@ const Services = () => {
       {/* Header Section */}
       <section className="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">
         <div className="container-custom text-center">
-          <h1 className="text-5xl font-bold mb-4">Our Services</h1>
-          <p className="text-xl text-teal-50">Premium Bus & Tempo Traveller Transportation</p>
+          <h1 className="text-5xl font-bold mb-4">Bus & Tempo Traveller Services - Hyderabad & Mahabubnagar</h1>
+          <p className="text-xl text-teal-50">Tours & Travels to All India Destinations | Best Rental Rates | 24/7 Service</p>
         </div>
       </section>
 
@@ -70,11 +70,12 @@ const Services = () => {
         <div className="container-custom">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="section-title">Bus & Tempo Traveller Services</h2>
+              <h2 className="section-title">Premium Bus & Tempo Traveller Rental from Hyderabad & Mahabubnagar</h2>
               <div className="w-24 h-1 bg-teal-600 mx-auto mb-6"></div>
               <p className="text-lg text-neutral-700 max-w-3xl mx-auto">
-                We provide spacious and comfortable buses and tempo travellers ideal for group travel, 
-                events, tours, and long-distance journeys across India.
+                SV Travels provides spacious and comfortable <strong>buses and tempo travellers from Hyderabad and Mahabubnagar</strong> 
+                ideal for group travel, events, tours, and long-distance journeys to <strong>all destinations across India</strong>. 
+                Serving Telangana and beyond with professional drivers and well-maintained vehicles.
               </p>
             </div>
 
@@ -82,7 +83,7 @@ const Services = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <img
                   src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800"
-                  alt="Bus Service"
+                  alt="Bus and Tempo Traveller Rental Service Hyderabad Mahabubnagar"
                   className="w-full h-full object-cover min-h-[300px]"
                   onError={(e) => {
                     e.target.src = 'https://via.placeholder.com/800x600?text=Bus+Service';
@@ -90,7 +91,7 @@ const Services = () => {
                 />
                 <div className="p-8 lg:p-12">
                   <h3 className="text-2xl font-bold text-neutral-800 mb-6">
-                    Why Choose Our Service?
+                    Why Choose SV Travels for India Tours?
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {features.map((feature, index) => (

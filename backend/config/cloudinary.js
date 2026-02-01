@@ -1,5 +1,5 @@
 const cloudinary = require('cloudinary').v2;
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const CloudinaryStorage = require('multer-storage-cloudinary');
 const multer = require('multer');
 
 // Configure Cloudinary
@@ -9,8 +9,8 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-// Configure Cloudinary storage for multer
-const storage = new CloudinaryStorage({
+// Configure Cloudinary storage for multer (compatible with v2.2.1)
+const storage = CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'sv-travels/vehicles',

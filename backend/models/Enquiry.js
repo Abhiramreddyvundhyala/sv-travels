@@ -73,6 +73,11 @@ const enquirySchema = new mongoose.Schema({
   }
 });
 
+// Create indexes for better query performance
+enquirySchema.index({ status: 1, deleted: 1 });
+enquirySchema.index({ createdAt: -1 });
+enquirySchema.index({ deleted: 1, deletedAt: -1 });
+
 // Update timestamp on modification
 enquirySchema.pre('save', function(next) {
   this.updatedAt = Date.now();

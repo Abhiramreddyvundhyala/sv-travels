@@ -27,10 +27,13 @@ import PrivateRoute from './components/PrivateRoute';
 // Context
 import { AuthProvider } from './context/AuthContext';
 
+// Detect if running on GitHub Pages subdirectory
+const basename = window.location.hostname.includes('github.io') ? '/sv-travels' : '/';
+
 function App() {
   return (
     <AuthProvider>
-      <Router basename={process.env.NODE_ENV === 'production' ? '/sv-travels' : '/'}>
+      <Router basename={basename}>
         <div className="flex flex-col min-h-screen">
           <Navbar />
           <main className="flex-grow">

@@ -31,10 +31,6 @@ router.get('/', async (req, res) => {
 // @access  Private (Admin)
 router.put('/', authMiddleware, async (req, res) => {
   try {
-    console.log('Update settings request');
-    console.log('Admin authenticated:', req.admin.email);
-    console.log('Settings data:', req.body);
-    
     let settings = await Settings.findOne();
     
     if (!settings) {
@@ -49,7 +45,6 @@ router.put('/', authMiddleware, async (req, res) => {
 
     settings.updatedAt = Date.now();
     await settings.save();
-    console.log('Settings updated successfully');
 
     res.json({
       success: true,
@@ -57,8 +52,8 @@ router.put('/', authMiddleware, async (req, res) => {
       settings
     });
   } catch (error) {
-    console.error('Update settings error:', error);
-    res.status(500).json({ success: false, message: 'Server error', error: error.message });
+    console.error('Update settings error:', error.message);
+    res.status(500).json({ success: false, message: 'Server error' });
   }
 });
 

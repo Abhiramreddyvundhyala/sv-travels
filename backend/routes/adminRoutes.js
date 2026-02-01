@@ -6,13 +6,21 @@ const Admin = require('../models/Admin');
 const authMiddleware = require('../middleware/authMiddleware');
 
 // @route   POST /api/admin/register
-// @desc    Register new admin (for initial setup only)
-// @access  Public
+// @desc    Register new admin (DISABLED IN PRODUCTION for security)
+// @access  Public (Development only)
 router.post('/register', [
   body('username').trim().notEmpty().withMessage('Username is required'),
   body('email').isEmail().withMessage('Valid email is required'),
   body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters')
 ], async (req, res) => {
+  // Disable registration in production
+  if (process.env.NODE_ENV === 'production') {
+    return res.status(403).json({ 
+      success: false, 
+      message: 'Admin registration is disabled in production' 
+    });
+  }
+
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -39,7 +47,7 @@ router.post('/register', [
       message: 'Admin registered successfully' 
     });
   } catch (error) {
-    console.error('Register error:', error);
+    console.error('Register error:', error.message);
     res.status(500).json({ success: false, message: 'Server error' });
   }
 });
@@ -59,11 +67,14 @@ router.post('/login', [
 
     const { username, password } = req.body;
 
+    // Sanitize username input to prevent NoSQL injection
+    const sanitizedUsername = String(username).toLowerCase().trim();
+
     // Find admin by email or username
     const admin = await Admin.findOne({ 
       $or: [
-        { email: username.toLowerCase() },
-        { username: username.toLowerCase() }
+        { email: sanitizedUsername },
+        { username: sanitizedUsername }
       ]
     });
     if (!admin) {
@@ -100,7 +111,7 @@ router.post('/login', [
       }
     });
   } catch (error) {
-    console.error('Login error:', error);
+    console.error('Login error:', error.message);
     res.status(500).json({ success: false, message: 'Server error' });
   }
 });

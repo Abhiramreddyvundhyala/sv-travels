@@ -8,19 +8,40 @@ const authMiddleware = require('../middleware/authMiddleware');
 // @desc    Create new enquiry
 // @access  Public
 router.post('/', [
-  body('name').trim().notEmpty().withMessage('Name is required'),
-  body('phone').trim().notEmpty().withMessage('Phone number is required'),
-  body('pickupLocation').trim().notEmpty().withMessage('Starting point is required'),
-  body('dropLocation').trim().notEmpty().withMessage('Ending point is required'),
+  body('name')
+    .trim()
+    .notEmpty().withMessage('Name is required')
+    .isLength({ min: 2, max: 100 }).withMessage('Name must be 2-100 characters')
+    .matches(/^[a-zA-Z\s.]+$/).withMessage('Name can only contain letters'),
+  body('phone')
+    .trim()
+    .notEmpty().withMessage('Phone number is required')
+    .matches(/^[6-9]\d{9}$/).withMessage('Invalid phone number format')
+    .isLength({ min: 10, max: 10 }).withMessage('Phone must be 10 digits'),
+  body('email')
+    .optional()
+    .trim()
+    .isEmail().withMessage('Invalid email format')
+    .normalizeEmail(),
+  body('pickupLocation')
+    .trim()
+    .notEmpty().withMessage('Starting point is required')
+    .isLength({ max: 200 }).withMessage('Location name too long'),
+  body('dropLocation')
+    .trim()
+    .notEmpty().withMessage('Ending point is required')
+    .isLength({ max: 200 }).withMessage('Location name too long'),
   body('startDate').notEmpty().withMessage('Start date is required'),
-  body('numberOfPassengers').isInt({ min: 1 }).withMessage('Valid number of passengers is required')
+  body('numberOfPassengers')
+    .isInt({ min: 1, max: 100 }).withMessage('Valid number of passengers is required (1-100)'),
+  body('message')
+    .optional()
+    .trim()
+    .isLength({ max: 1000 }).withMessage('Message too long (max 1000 characters)')
 ], async (req, res) => {
   try {
-    console.log('Received enquiry data:', req.body);
-    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      console.log('Validation errors:', errors.array());
       return res.status(400).json({ success: false, errors: errors.array() });
     }
 
@@ -38,7 +59,6 @@ router.post('/', [
     });
 
     await enquiry.save();
-    console.log('Enquiry saved successfully:', enquiry);
 
     res.status(201).json({
       success: true,
@@ -46,7 +66,7 @@ router.post('/', [
       enquiry
     });
   } catch (error) {
-    console.error('Create enquiry error:', error);
+    console.error('Create enquiry error:', error.message);
     res.status(500).json({ success: false, message: 'Server error' });
   }
 });
@@ -110,20 +130,13 @@ router.get('/', authMiddleware, async (req, res) => {
       .sort({ createdAt: -1 })
       .lean();
     
-    console.log('Fetched enquiries count:', enquiries.length);
-    if (enquiries.length > 0) {
-      console.log('Sample enquiry data:', JSON.stringify(enquiries[0], null, 2));
-      console.log('Sample enquiry dropLocation:', enquiries[0].dropLocation);
-      console.log('Sample enquiry numberOfPassengers:', enquiries[0].numberOfPassengers);
-    }
-    
     res.json({
       success: true,
       count: enquiries.length,
       enquiries
     });
   } catch (error) {
-    console.error('Get enquiries error:', error);
+    console.error('Get enquiries error:', error.message);
     res.status(500).json({ success: false, message: 'Server error' });
   }
 });
@@ -159,10 +172,6 @@ router.put('/:id', authMiddleware, [
   body('status').isIn(['New', 'Contacted', 'Confirmed', 'Cancelled']).withMessage('Invalid status')
 ], async (req, res) => {
   try {
-    console.log('Update enquiry request for ID:', req.params.id);
-    console.log('Admin authenticated:', req.admin.email);
-    console.log('New status:', req.body.status);
-    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ success: false, errors: errors.array() });
@@ -171,7 +180,6 @@ router.put('/:id', authMiddleware, [
     const enquiry = await Enquiry.findById(req.params.id);
     
     if (!enquiry) {
-      console.log('Enquiry not found');
       return res.status(404).json({ 
         success: false, 
         message: 'Enquiry not found' 
@@ -180,7 +188,6 @@ router.put('/:id', authMiddleware, [
 
     enquiry.status = req.body.status;
     await enquiry.save();
-    console.log('Enquiry updated successfully');
 
     res.json({
       success: true,
@@ -188,8 +195,8 @@ router.put('/:id', authMiddleware, [
       enquiry
     });
   } catch (error) {
-    console.error('Update enquiry error:', error);
-    res.status(500).json({ success: false, message: 'Server error', error: error.message });
+    console.error('Update enquiry error:', error.message);
+    res.status(500).json({ success: false, message: 'Server error' });
   }
 });
 
@@ -198,13 +205,9 @@ router.put('/:id', authMiddleware, [
 // @access  Private (Admin)
 router.delete('/:id', authMiddleware, async (req, res) => {
   try {
-    console.log('Delete enquiry request for ID:', req.params.id);
-    console.log('Admin authenticated:', req.admin.email);
-    
     const enquiry = await Enquiry.findById(req.params.id);
     
     if (!enquiry) {
-      console.log('Enquiry not found');
       return res.status(404).json({ 
         success: false, 
         message: 'Enquiry not found' 
@@ -223,16 +226,14 @@ router.delete('/:id', authMiddleware, async (req, res) => {
     enquiry.deletedAt = new Date();
     enquiry.deletedBy = req.admin._id;
     await enquiry.save();
-    
-    console.log('Enquiry soft deleted successfully');
 
     res.json({
       success: true,
       message: 'Enquiry deleted successfully'
     });
   } catch (error) {
-    console.error('Delete enquiry error:', error);
-    res.status(500).json({ success: false, message: 'Server error', error: error.message });
+    console.error('Delete enquiry error:', error.message);
+    res.status(500).json({ success: false, message: 'Server error' });
   }
 });
 

@@ -56,6 +56,11 @@ const vehicleSchema = new mongoose.Schema({
   }
 });
 
+// Create indexes for better query performance
+vehicleSchema.index({ availability: 1 });
+vehicleSchema.index({ vehicleType: 1 });
+vehicleSchema.index({ createdAt: -1 });
+
 // Update timestamp on modification
 vehicleSchema.pre('save', function(next) {
   this.updatedAt = Date.now();

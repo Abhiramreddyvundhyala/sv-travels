@@ -32,6 +32,10 @@ const adminSchema = new mongoose.Schema({
   }
 });
 
+// Create indexes for better query performance
+adminSchema.index({ email: 1 });
+adminSchema.index({ username: 1 });
+
 // Hash password before saving
 adminSchema.pre('save', async function(next) {
   if (!this.isModified('password')) {

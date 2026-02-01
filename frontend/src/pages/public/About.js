@@ -11,8 +11,8 @@ const About = () => {
       {/* Header Section */}
       <section className="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">
         <div className="container-custom text-center">
-          <h1 className="text-5xl font-bold mb-4">About SV Travels</h1>
-          <p className="text-xl text-teal-50">Sri Venkateshwara Travels - Your Trusted Travel Partner</p>
+          <h1 className="text-5xl font-bold mb-4">About SV Travels - Hyderabad & Mahabubnagar</h1>
+          <p className="text-xl text-teal-50">Sri Venkateshwara Travels - Your Trusted Partner for Tours Across India</p>
         </div>
       </section>
 
@@ -21,7 +21,7 @@ const About = () => {
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="section-title">What is SV Travels?</h2>
+              <h2 className="section-title">Leading Bus & Tempo Traveller Service in Hyderabad & Mahabubnagar</h2>
               <div className="w-24 h-1 bg-teal-600 mx-auto mb-6"></div>
             </div>
 
@@ -29,7 +29,7 @@ const About = () => {
               <div>
                 <img
                   src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600"
-                  alt="SV Travels Buses"
+                  alt="SV Travels Bus Rental Hyderabad Mahabubnagar"
                   className="rounded-xl shadow-lg w-full"
                   onError={(e) => {
                     e.target.src = 'https://via.placeholder.com/600x400?text=SV+Travels';
@@ -38,20 +38,21 @@ const About = () => {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-neutral-800 mb-4">
-                  SV = Sri Venkateshwara
+                  SV Travels = Sri Venkateshwara Travels
                 </h3>
                 <p className="text-neutral-700 mb-4 leading-relaxed">
-                  SV Travels stands for <strong>Sri Venkateshwara Travels</strong>, a name synonymous with 
-                  trust, reliability, and excellence in group transportation services across India.
+                  <strong>SV Travels (Sri Venkateshwara Travels)</strong> is the premier bus and tempo traveller rental service 
+                  based in <strong>Hyderabad and Mahabubnagar, Telangana</strong>. We specialize in providing comfortable, safe, 
+                  and affordable group transportation for tours and travels to <strong>all destinations across India</strong>.
                 </p>
                 <p className="text-neutral-700 mb-4 leading-relaxed">
-                  Founded with a vision to provide safe, comfortable, and affordable travel solutions, 
-                  we have been serving thousands of satisfied customers for years. Our fleet of well-maintained 
-                  buses and tempo travellers ensures that your journey is as comfortable as your destination.
+                  With over a decade of experience serving customers from Hyderabad, Mahabubnagar, Wanaparthy, and surrounding areas, 
+                  we have built a reputation for reliability and excellence. Our modern fleet and professional drivers ensure your 
+                  journey is smooth and memorable, whether you're traveling within Telangana or exploring distant states.
                 </p>
                 <p className="text-neutral-700 leading-relaxed">
-                  Whether it's a wedding, corporate event, school trip, or pilgrimage, SV Travels is committed 
-                  to making your group travel experience memorable and hassle-free.
+                  From <strong>wedding transportation and corporate events</strong> to <strong>pilgrimage tours and family vacations</strong>, 
+                  SV Travels is your one-stop solution for all group travel needs from Hyderabad and Mahabubnagar to anywhere in India.
                 </p>
               </div>
             </div>
@@ -69,9 +70,9 @@ const About = () => {
                 <h3 className="text-2xl font-bold text-neutral-800">Our Vision</h3>
               </div>
               <p className="text-neutral-700 leading-relaxed">
-                To become India's most trusted and preferred transportation service provider, 
-                setting industry standards in safety, comfort, and customer satisfaction. We envision 
-                a future where every journey with SV Travels is a delightful experience.
+                To become India's most trusted and preferred bus and tempo traveller service provider from Hyderabad and Mahabubnagar, 
+                setting industry standards in safety, comfort, and customer satisfaction for tours across India. We envision 
+                a future where every journey with SV Travels is a delightful experience, connecting Telangana with the rest of India.
               </p>
             </div>
 
@@ -81,9 +82,9 @@ const About = () => {
                 <h3 className="text-2xl font-bold text-neutral-800">Our Mission</h3>
               </div>
               <p className="text-neutral-700 leading-relaxed">
-                To provide exceptional group transportation services through well-maintained vehicles, 
+                To provide exceptional bus and tempo traveller rental services from Hyderabad and Mahabubnagar through well-maintained vehicles, 
                 professional drivers, and customer-centric approach. We are committed to ensuring safe, 
-                comfortable, and timely travel for all our customers at competitive prices.
+                comfortable, and timely travel for all our customers across India at competitive prices.
               </p>
             </div>
           </div>
