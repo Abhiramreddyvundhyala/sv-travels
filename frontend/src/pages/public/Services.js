@@ -10,7 +10,7 @@ const Services = () => {
   const useCases = [
     {
       icon: <FaUsers className="text-4xl text-amber-600" />,
-      title: 'Wedding & Event Transportation (Hyderabad)',
+      title: 'Wedding & Event Transportation',
       description: 'Make your special day memorable with our spacious buses for guest transportation from Hyderabad, Mahabubnagar to any venue across India.'
     },
     {
@@ -25,7 +25,7 @@ const Services = () => {
     },
     {
       icon: <FaShieldAlt className="text-4xl text-amber-600" />,
-      title: 'Pilgrimage Tours (Tirupati, Shirdi, Varanasi)',
+      title: 'Pilgrimage Tours',
       description: 'Comfortable pilgrimage travel from Hyderabad/Mahabubnagar to Tirupati, Shirdi, Varanasi, Puri, and other sacred destinations.'
     },
     {
@@ -161,7 +161,7 @@ const Services = () => {
               <ul className="space-y-2">
                 <li className="flex items-start">
                   <FaCheckCircle className="text-teal-500 mt-1 mr-3 flex-shrink-0" />
-                  <span className="text-neutral-700">Seating capacity: 35-50 passengers</span>
+                  <span className="text-neutral-700">Seating capacity: 20-50 passengers</span>
                 </li>
                 <li className="flex items-start">
                   <FaCheckCircle className="text-teal-500 mt-1 mr-3 flex-shrink-0" />
