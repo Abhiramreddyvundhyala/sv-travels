@@ -9,23 +9,23 @@ const About = () => {
   return (
     <div className="min-h-screen pt-24">
       {/* Header Section */}
-      <section className="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">
+      <section className="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-12 px-4 sm:py-16">
         <div className="container-custom text-center">
-          <h1 className="text-5xl font-bold mb-4">About SV Travels - Hyderabad & Mahabubnagar</h1>
-          <p className="text-xl text-teal-50">Sri Venkateshwara Travels - Your Trusted Partner for Tours Across India</p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 px-4">About SV Travels - Hyderabad & Mahabubnagar</h1>
+          <p className="text-base sm:text-lg md:text-xl text-teal-50 px-4">Sri Venkateshwara Travels - Your Trusted Partner for Tours Across India</p>
         </div>
       </section>
 
       {/* Introduction */}
-      <section className="py-16 bg-white">
+      <section className="py-12 px-4 sm:py-16 bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="section-title">Leading Bus & Tempo Traveller Service in Hyderabad & Mahabubnagar</h2>
-              <div className="w-24 h-1 bg-teal-600 mx-auto mb-6"></div>
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="section-title px-4">Leading Bus & Tempo Traveller Service in Hyderabad & Mahabubnagar</h2>
+              <div className="w-16 sm:w-24 h-1 bg-teal-600 mx-auto mb-4 sm:mb-6"></div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div>
                 <img
                   src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600"
@@ -37,10 +37,10 @@ const About = () => {
                 />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-neutral-800 mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold text-neutral-800 mb-3 sm:mb-4">
                   SV Travels = Sri Venkateshwara Travels
                 </h3>
-                <p className="text-neutral-700 mb-4 leading-relaxed">
+                <p className="text-sm sm:text-base text-neutral-700 mb-3 sm:mb-4 leading-relaxed">
                   <strong>SV Travels (Sri Venkateshwara Travels)</strong> is the premier bus and tempo traveller rental service 
                   based in <strong>Hyderabad and Mahabubnagar, Telangana</strong>. We specialize in providing comfortable, safe, 
                   and affordable group transportation for tours and travels to <strong>all destinations across India</strong>.
@@ -61,27 +61,27 @@ const About = () => {
       </section>
 
       {/* Vision & Mission */}
-      <section className="py-16 bg-neutral-50">
+      <section className="py-12 px-4 sm:py-16 bg-neutral-50">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="card p-8">
-              <div className="flex items-center mb-4">
-                <FaEye className="text-4xl text-teal-600 mr-4" />
-                <h3 className="text-2xl font-bold text-neutral-800">Our Vision</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+            <div className="card p-6 sm:p-6 sm:p-8">
+              <div className="flex items-center mb-3 sm:mb-4">
+                <FaEye className="text-3xl sm:text-4xl text-teal-600 mr-3 sm:mr-4" />
+                <h3 className="text-xl sm:text-2xl font-bold text-neutral-800">Our Vision</h3>
               </div>
-              <p className="text-neutral-700 leading-relaxed">
+              <p className="text-sm sm:text-base text-neutral-700 leading-relaxed">
                 To become India's most trusted and preferred bus and tempo traveller service provider from Hyderabad and Mahabubnagar, 
                 setting industry standards in safety, comfort, and customer satisfaction for tours across India. We envision 
                 a future where every journey with SV Travels is a delightful experience, connecting Telangana with the rest of India.
               </p>
             </div>
 
-            <div className="card p-8">
-              <div className="flex items-center mb-4">
-                <FaBullseye className="text-4xl text-amber-600 mr-4" />
-                <h3 className="text-2xl font-bold text-neutral-800">Our Mission</h3>
+            <div className="card p-6 sm:p-8">
+              <div className="flex items-center mb-3 sm:mb-4">
+                <FaBullseye className="text-3xl sm:text-4xl text-amber-600 mr-3 sm:mr-4" />
+                <h3 className="text-xl sm:text-2xl font-bold text-neutral-800">Our Mission</h3>
               </div>
-              <p className="text-neutral-700 leading-relaxed">
+              <p className="text-sm sm:text-base text-neutral-700 leading-relaxed">
                 To provide exceptional bus and tempo traveller rental services from Hyderabad and Mahabubnagar through well-maintained vehicles, 
                 professional drivers, and customer-centric approach. We are committed to ensuring safe, 
                 comfortable, and timely travel for all our customers across India at competitive prices.
@@ -92,44 +92,44 @@ const About = () => {
       </section>
 
       {/* Core Values */}
-      <section className="py-16 bg-white">
+      <section className="py-12 px-4 sm:py-16 bg-white">
         <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="section-title">Our Core Values</h2>
-            <p className="section-subtitle">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="section-title px-4">Our Core Values</h2>
+            <p className="section-subtitle px-4">
               The principles that drive us forward
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="card p-8 text-center hover:transform hover:-translate-y-2">
-              <div className="flex justify-center mb-4">
-                <FaShieldAlt className="text-5xl text-teal-600" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+            <div className="card p-6 sm:p-8 text-center hover:transform hover:-translate-y-2">
+              <div className="flex justify-center mb-3 sm:mb-4">
+                <FaShieldAlt className="text-4xl sm:text-5xl text-teal-600" />
               </div>
-              <h3 className="text-xl font-bold text-neutral-800 mb-3">Safety First</h3>
-              <p className="text-neutral-600">
+              <h3 className="text-lg sm:text-xl font-bold text-neutral-800 mb-2 sm:mb-3">Safety First</h3>
+              <p className="text-sm sm:text-base text-neutral-600">
                 Your safety is our top priority. All our vehicles undergo regular maintenance 
                 and safety checks to ensure a secure journey.
               </p>
             </div>
 
-            <div className="card p-8 text-center hover:transform hover:-translate-y-2">
-              <div className="flex justify-center mb-4">
-                <FaClock className="text-5xl text-amber-600" />
+            <div className="card p-6 sm:p-8 text-center hover:transform hover:-translate-y-2">
+              <div className="flex justify-center mb-3 sm:mb-4">
+                <FaClock className="text-4xl sm:text-5xl text-amber-600" />
               </div>
-              <h3 className="text-xl font-bold text-neutral-800 mb-3">Reliability</h3>
-              <p className="text-neutral-600">
+              <h3 className="text-lg sm:text-xl font-bold text-neutral-800 mb-2 sm:mb-3">Reliability</h3>
+              <p className="text-sm sm:text-base text-neutral-600">
                 We value your time. Our commitment to punctuality ensures you reach your 
                 destination on schedule, every time.
               </p>
             </div>
 
-            <div className="card p-8 text-center hover:transform hover:-translate-y-2">
-              <div className="flex justify-center mb-4">
-                <FaUsers className="text-5xl text-teal-600" />
+            <div className="card p-6 sm:p-8 text-center hover:transform hover:-translate-y-2">
+              <div className="flex justify-center mb-3 sm:mb-4">
+                <FaUsers className="text-4xl sm:text-5xl text-teal-600" />
               </div>
-              <h3 className="text-xl font-bold text-neutral-800 mb-3">Customer Focus</h3>
-              <p className="text-neutral-600">
+              <h3 className="text-lg sm:text-xl font-bold text-neutral-800 mb-2 sm:mb-3">Customer Focus</h3>
+              <p className="text-sm sm:text-base text-neutral-600">
                 Your comfort and satisfaction drive everything we do. We go the extra mile 
                 to exceed your expectations.
               </p>
@@ -139,15 +139,15 @@ const About = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-neutral-50">
+      <section className="py-12 px-4 sm:py-16 bg-neutral-50">
         <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="section-title">Why Choose SV Travels?</h2>
-            <div className="w-24 h-1 bg-teal-600 mx-auto mb-6"></div>
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="section-title px-4">Why Choose SV Travels?</h2>
+            <div className="w-16 sm:w-24 h-1 bg-teal-600 mx-auto mb-4 sm:mb-6"></div>
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <div className="flex items-start space-x-4 bg-white p-6 rounded-lg shadow-md">
                 <FaAward className="text-3xl text-teal-600 flex-shrink-0 mt-1" />
                 <div>
@@ -193,15 +193,15 @@ const About = () => {
       </section>
 
       {/* Commitment Section */}
-      <section className="py-16 bg-gradient-to-r from-teal-600 to-teal-800 text-white">
+      <section className="py-12 px-4 sm:py-16 bg-gradient-to-r from-teal-600 to-teal-800 text-white">
         <div className="container-custom text-center">
-          <h2 className="text-4xl font-bold mb-6">Our Commitment to You</h2>
-          <p className="text-xl text-teal-50 max-w-3xl mx-auto mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 px-4">Our Commitment to You</h2>
+          <p className="text-base sm:text-lg md:text-xl text-teal-50 max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
             At Sri Venkateshwara Travels, we understand that your journey is as important as your destination. 
             That's why we are committed to providing you with the best-in-class transportation services that 
             combine comfort, safety, and affordability.
           </p>
-          <p className="text-lg text-teal-100 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-teal-100 max-w-3xl mx-auto px-4">
             Whether you're planning a wedding, corporate event, educational tour, or family trip, 
             trust SV Travels to make your journey comfortable, safe, and memorable.
           </p>

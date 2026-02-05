@@ -68,38 +68,38 @@ const Home = () => {
       />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-teal-600 to-teal-800 text-white pt-32 pb-20">
+      <section className="relative bg-gradient-to-r from-teal-600 to-teal-800 text-white pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 overflow-hidden">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
             <div className="animate-fadeIn">
-              <h1 className="text-5xl md:text-6xl font-bold mb-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
                 SV Travels
               </h1>
-              <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-teal-100">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-3 sm:mb-4 text-teal-100">
                 Sri Venkateshwara Travels
               </h2>
-              <p className="text-xl md:text-2xl mb-6 text-amber-100">
+              <p className="text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 text-amber-100">
                 Hyderabad • Mahabubnagar • All India Tours
               </p>
-              <p className="text-lg mb-8 text-teal-50">
+              <p className="text-base sm:text-lg mb-6 sm:mb-8 text-teal-50">
                 Premium Bus & Tempo Traveller Services
               </p>
-              <p className="text-neutral-100 mb-8 leading-relaxed">
+              <p className="text-sm sm:text-base text-neutral-100 mb-6 sm:mb-8 leading-relaxed">
                 Leading bus and tempo traveller rental service from <strong>Hyderabad and Mahabubnagar</strong> for tours and travels across India. 
                 Perfect for weddings, corporate events, pilgrimages, family tours, and all your group transportation needs. 
                 24/7 service with well-maintained vehicles and experienced drivers.
               </p>
               
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                 <Link
                   to="/booking"
-                  className="bg-white text-teal-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-neutral-100 transition-all duration-300 shadow-xl hover:shadow-2xl"
+                  className="bg-white text-teal-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-neutral-100 transition-all duration-300 shadow-xl hover:shadow-2xl text-center"
                 >
                   Enquire Now
                 </Link>
                 <a
                   href={`tel:${settings.contactPhone}`}
-                  className="bg-green-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center gap-2"
+                  className="bg-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-green-700 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center gap-2"
                 >
                   <FaPhone /> Call Now
                 </a>
@@ -107,7 +107,7 @@ const Home = () => {
                   href={`https://wa.me/${settings.whatsappNumber}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-green-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-600 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center gap-2"
+                  className="bg-green-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-green-600 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center gap-2"
                 >
                   <FaWhatsapp /> WhatsApp
                 </a>
@@ -131,22 +131,22 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-neutral-50">
+      <section className="py-12 sm:py-16 md:py-20 bg-neutral-50 px-4">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="section-title">Why Choose SV Travels for Tours from Hyderabad & Mahabubnagar?</h2>
-            <p className="section-subtitle">
+          <div className="text-center mb-10 sm:mb-12 md:mb-16">
+            <h2 className="section-title px-4">Why Choose SV Travels for Tours from Hyderabad & Mahabubnagar?</h2>
+            <p className="section-subtitle px-4">
               Your trusted partner for comfortable and reliable group transportation across India
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="card p-8 text-center hover:transform hover:-translate-y-2"
+                className="card p-6 sm:p-8 text-center hover:transform hover:-translate-y-2"
               >
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-center mb-3 sm:mb-4">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold text-neutral-800 mb-3">
@@ -162,11 +162,11 @@ const Home = () => {
       </section>
 
       {/* Services Preview Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-white px-4">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="section-title">Our Services - Tours & Travels Across India</h2>
-            <p className="section-subtitle">
+          <div className="text-center mb-10 sm:mb-12 md:mb-16">
+            <h2 className="section-title px-4">Our Services - Tours & Travels Across India</h2>
+            <p className="section-subtitle px-4">
               Premium bus and tempo traveller rental from Hyderabad & Mahabubnagar
             </p>
           </div>
@@ -176,16 +176,16 @@ const Home = () => {
               <img
                 src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=600"
                 alt="Bus and Tempo Traveller Rental Hyderabad Mahabubnagar"
-                className="w-full h-64 md:h-full object-cover"
+                className="w-full h-56 sm:h-64 md:h-full object-cover"
                 onError={(e) => {
                   e.target.src = 'https://via.placeholder.com/600x400?text=Our+Vehicles';
                 }}
               />
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-neutral-800 mb-4">
+              <div className="p-6 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-neutral-800 mb-3 sm:mb-4">
                   Bus & Tempo Traveller Rental Services
                 </h3>
-                <p className="text-neutral-600 mb-6">
+                <p className="text-sm sm:text-base text-neutral-600 mb-4 sm:mb-6">
                   Based in <strong>Hyderabad and Mahabubnagar</strong>, we provide spacious and comfortable buses and tempo travellers 
                   for tours and travels to <strong>all destinations across India</strong>. Expert drivers, GPS-enabled vehicles, and 24/7 support.
                 </p>
@@ -224,13 +224,13 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-teal-600 to-teal-800 text-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-teal-600 to-teal-800 text-white px-4">
         <div className="container-custom text-center">
-          <h2 className="text-4xl font-bold mb-4">Ready to Book Your India Tour from Hyderabad?</h2>
-          <p className="text-xl mb-8 text-teal-50">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-4">Ready to Book Your India Tour from Hyderabad?</h2>
+          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-teal-50 px-4">
             Best bus and tempo traveller rental rates in Hyderabad & Mahabubnagar | 24/7 Service | All India Tours
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
             <Link
               to="/booking"
               className="bg-white text-teal-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-neutral-100 transition-all duration-300 shadow-xl"
@@ -248,16 +248,16 @@ const Home = () => {
       </section>
 
       {/* Location & Service Area Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-white px-4">
         <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="section-title">Our Service Area - Tours Across India</h2>
-            <p className="section-subtitle">Based in Hyderabad & Mahabubnagar, Serving All of India</p>
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="section-title px-4">Our Service Area - Tours Across India</h2>
+            <p className="section-subtitle px-4">Based in Hyderabad & Mahabubnagar, Serving All of India</p>
           </div>
 
           <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              <div className="card p-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
+              <div className="card p-6 sm:p-8">
                 <h3 className="text-2xl font-bold text-teal-600 mb-4">📍 Our Base Locations</h3>
                 <ul className="space-y-3 text-neutral-700">
                   <li className="flex items-start">

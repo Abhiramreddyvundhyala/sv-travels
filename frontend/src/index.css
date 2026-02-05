@@ -48,6 +48,51 @@
   box-sizing: border-box;
 }
 
+/* Prevent horizontal scroll globally */
+#root {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Ensure all sections fit within viewport */
+section {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Ensure all divs respect viewport width */
+div {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Make images responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Ensure text wraps and doesn't overflow */
+p, h1, h2, h3, h4, h5, h6, span, a, li {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Prevent long words or URLs from overflowing */
+.break-all {
+  word-break: break-all;
+}
+
+/* For specific elements that need to break on word boundaries */
+.break-words {
+  word-break: break-word;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -56,6 +101,9 @@ body {
   color: var(--neutral-900);
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
 }
 
 code {
@@ -64,6 +112,8 @@ code {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Custom Scrollbar - Modern Design */
@@ -406,7 +456,9 @@ html {
 
 /* Container */
 .container-custom {
-  @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Hero Background Pattern - Advanced */

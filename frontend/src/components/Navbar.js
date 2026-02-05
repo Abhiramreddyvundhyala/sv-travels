@@ -38,19 +38,19 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${
+    <nav className={`fixed w-full z-50 transition-all duration-500 overflow-x-hidden ${
       isScrolled ? 'bg-white/95 backdrop-blur-md shadow-2xl' : 'bg-white/90 backdrop-blur-sm shadow-lg'
     }`}>
       <div className="container-custom">
         <div className="flex justify-between items-center py-5">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="bg-gradient-to-br from-teal-500 to-teal-600 p-3 rounded-2xl group-hover:from-teal-600 group-hover:to-teal-700 transition-all duration-300 shadow-lg group-hover:shadow-xl transform group-hover:scale-110">
-              <FaBus className="text-white text-3xl" />
+          <Link to="/" className="flex items-center space-x-2 sm:space-x-3 group flex-shrink-0">
+            <div className="bg-gradient-to-br from-teal-500 to-teal-600 p-2 sm:p-3 rounded-2xl group-hover:from-teal-600 group-hover:to-teal-700 transition-all duration-300 shadow-lg group-hover:shadow-xl transform group-hover:scale-110">
+              <FaBus className="text-white text-2xl sm:text-3xl" />
             </div>
-            <div>
-              <h1 className="text-2xl font-bold gradient-text">SV Travels</h1>
-              <p className="text-xs text-neutral-500 -mt-1 font-medium">Sri Venkateshwara Travels</p>
+            <div className="overflow-hidden">
+              <h1 className="text-lg sm:text-xl md:text-2xl font-bold gradient-text whitespace-nowrap">SV Travels</h1>
+              <p className="text-xs text-neutral-500 -mt-1 font-medium hidden sm:block">Sri Venkateshwara Travels</p>
             </div>
           </Link>
 

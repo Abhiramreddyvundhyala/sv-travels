@@ -58,21 +58,21 @@ const Services = () => {
   return (
     <div className="min-h-screen pt-24">
       {/* Header Section */}
-      <section className="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">
+      <section className="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-12 px-4 sm:py-16">
         <div className="container-custom text-center">
-          <h1 className="text-5xl font-bold mb-4">Bus & Tempo Traveller Services - Hyderabad & Mahabubnagar</h1>
-          <p className="text-xl text-teal-50">Tours & Travels to All India Destinations | Best Rental Rates | 24/7 Service</p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 px-4">Bus & Tempo Traveller Services - Hyderabad & Mahabubnagar</h1>
+          <p className="text-base sm:text-lg md:text-xl text-teal-50 px-4">Tours & Travels to All India Destinations | Best Rental Rates | 24/7 Service</p>
         </div>
       </section>
 
       {/* Main Service Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 px-4 sm:py-16 bg-white">
         <div className="container-custom">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="section-title">Premium Bus & Tempo Traveller Rental from Hyderabad & Mahabubnagar</h2>
-              <div className="w-24 h-1 bg-teal-600 mx-auto mb-6"></div>
-              <p className="text-lg text-neutral-700 max-w-3xl mx-auto">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="section-title px-4">Premium Bus & Tempo Traveller Rental from Hyderabad & Mahabubnagar</h2>
+              <div className="w-16 sm:w-24 h-1 bg-teal-600 mx-auto mb-4 sm:mb-6"></div>
+              <p className="text-base sm:text-lg text-neutral-700 max-w-3xl mx-auto px-4">
                 SV Travels provides spacious and comfortable <strong>buses and tempo travellers from Hyderabad and Mahabubnagar</strong> 
                 ideal for group travel, events, tours, and long-distance journeys to <strong>all destinations across India</strong>. 
                 Serving Telangana and beyond with professional drivers and well-maintained vehicles.
@@ -89,11 +89,11 @@ const Services = () => {
                     e.target.src = 'https://via.placeholder.com/800x600?text=Bus+Service';
                   }}
                 />
-                <div className="p-8 lg:p-12">
-                  <h3 className="text-2xl font-bold text-neutral-800 mb-6">
+                <div className="p-6 sm:p-8 lg:p-12">
+                  <h3 className="text-xl sm:text-2xl font-bold text-neutral-800 mb-4 sm:mb-6">
                     Why Choose SV Travels for India Tours?
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     {features.map((feature, index) => (
                       <div key={index} className="flex items-start">
                         <FaCheckCircle className="text-teal-500 mt-1 mr-3 flex-shrink-0" />
@@ -109,25 +109,25 @@ const Services = () => {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-16 bg-neutral-50">
+      <section className="py-12 px-4 sm:py-16 bg-neutral-50">
         <div className="container-custom">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 sm:mb-12 px-4">
             <h2 className="section-title">Perfect For Every Occasion</h2>
             <p className="section-subtitle">
               Our vehicles are ideal for various types of group travel
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {useCases.map((useCase, index) => (
               <div
                 key={index}
-                className="card p-8 text-center hover:transform hover:-translate-y-2"
+                className="card p-6 sm:p-8 text-center hover:transform hover:-translate-y-2"
               >
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-center mb-3 sm:mb-4">
                   {useCase.icon}
                 </div>
-                <h3 className="text-xl font-bold text-neutral-800 mb-3">
+                <h3 className="text-lg sm:text-xl font-bold text-neutral-800 mb-2 sm:mb-3">
                   {useCase.title}
                 </h3>
                 <p className="text-neutral-600">
@@ -140,22 +140,22 @@ const Services = () => {
       </section>
 
       {/* Vehicle Types */}
-      <section className="py-16 bg-white">
+      <section className="py-12 px-4 sm:py-16 bg-white">
         <div className="container-custom">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 sm:mb-12 px-4">
             <h2 className="section-title">Our Fleet</h2>
             <p className="section-subtitle">
               Choose from our range of well-maintained vehicles
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="card p-8">
-              <div className="flex items-center mb-4">
-                <FaBus className="text-5xl text-teal-600 mr-4" />
-                <h3 className="text-2xl font-bold text-neutral-800">Buses</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+            <div className="card p-6 sm:p-6 sm:p-8">
+              <div className="flex items-center mb-3 sm:mb-4">
+                <FaBus className="text-4xl sm:text-5xl text-teal-600 mr-3 sm:mr-4" />
+                <h3 className="text-xl sm:text-2xl font-bold text-neutral-800">Buses</h3>
               </div>
-              <p className="text-neutral-700 mb-4">
+              <p className="text-sm sm:text-base text-neutral-700 mb-3 sm:mb-4">
                 Our spacious buses are perfect for large groups, offering:
               </p>
               <ul className="space-y-2">
@@ -178,12 +178,12 @@ const Services = () => {
               </ul>
             </div>
 
-            <div className="card p-8">
-              <div className="flex items-center mb-4">
-                <FaBus className="text-5xl text-amber-600 mr-4" />
-                <h3 className="text-2xl font-bold text-neutral-800">Tempo Travellers</h3>
+            <div className="card p-6 sm:p-8">
+              <div className="flex items-center mb-3 sm:mb-4">
+                <FaBus className="text-4xl sm:text-5xl text-amber-600 mr-3 sm:mr-4" />
+                <h3 className="text-xl sm:text-2xl font-bold text-neutral-800">Tempo Travellers</h3>
               </div>
-              <p className="text-neutral-700 mb-4">
+              <p className="text-sm sm:text-base text-neutral-700 mb-3 sm:mb-4">
                 Our tempo travellers are ideal for smaller groups, featuring:
               </p>
               <ul className="space-y-2">
@@ -219,13 +219,13 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-teal-600 to-teal-800 text-white">
+      <section className="py-12 px-4 sm:py-16 bg-gradient-to-r from-teal-600 to-teal-800 text-white">
         <div className="container-custom text-center">
-          <h2 className="text-4xl font-bold mb-4">Ready to Book Your Journey?</h2>
-          <p className="text-xl mb-8 text-teal-50">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-4">Ready to Book Your Journey?</h2>
+          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-teal-50 px-4">
             Contact us today for competitive quotes and excellent service
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 px-4">
             <Link
               to="/booking"
               className="bg-white text-teal-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-neutral-100 transition-all duration-300 shadow-xl"

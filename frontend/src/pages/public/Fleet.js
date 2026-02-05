@@ -71,22 +71,22 @@ const Fleet = () => {
   return (
     <div className="min-h-screen pt-24">
       {/* Header Section */}
-      <section className="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">
+      <section className="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-12 px-4 sm:py-16">
         <div className="container-custom text-center">
-          <h1 className="text-5xl font-bold mb-4">Our Bus & Tempo Traveller Fleet - Hyderabad & Mahabubnagar</h1>
-          <p className="text-xl text-teal-50">Well-Maintained Vehicles for Tours Across India | Spacious & Comfortable</p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 px-4">Our Bus & Tempo Traveller Fleet - Hyderabad & Mahabubnagar</h1>
+          <p className="text-base sm:text-lg md:text-xl text-teal-50 px-4">Well-Maintained Vehicles for Tours Across India | Spacious & Comfortable</p>
         </div>
       </section>
 
       {/* Filter Section */}
-      <section className="py-8 bg-neutral-50">
+      <section className="py-6 sm:py-8 bg-neutral-50 px-4">
         <div className="container-custom">
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
             {['All', 'Bus', 'Tempo Traveller'].map((type) => (
               <button
                 key={type}
                 onClick={() => setFilter(type)}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                className={`px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base ${
                   filter === type
                     ? 'bg-teal-600 text-white shadow-lg'
                     : 'bg-white text-neutral-700 hover:bg-neutral-100 shadow'
@@ -100,15 +100,15 @@ const Fleet = () => {
       </section>
 
       {/* Vehicles Grid */}
-      <section className="py-16 bg-white">
+      <section className="py-12 px-4 sm:py-16 bg-white">
         <div className="container-custom">
           {filteredVehicles.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-xl text-neutral-600">No vehicles available at the moment.</p>
-              <p className="text-neutral-500 mt-2">Please check back later or contact us for availability.</p>
+              <p className="text-lg sm:text-xl text-neutral-600">No vehicles available at the moment.</p>
+              <p className="text-sm sm:text-base text-neutral-500 mt-2">Please check back later or contact us for availability.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {filteredVehicles.map((vehicle) => {
                 const vehicleImages = vehicle.images && vehicle.images.length > 0 
                   ? vehicle.images 
@@ -118,7 +118,7 @@ const Fleet = () => {
                 return (
                   <div key={vehicle._id} className="card overflow-hidden">
                     {/* Vehicle Image Carousel */}
-                    <div className="relative h-64 overflow-hidden group">
+                    <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden group">
                       <img
                         src={getImageUrl(vehicleImages[currentIndex])} 
                         alt={`${vehicle.vehicleName} - Image ${currentIndex + 1}`}
@@ -178,12 +178,12 @@ const Fleet = () => {
                     </div>
 
                   {/* Vehicle Details */}
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold text-neutral-800 mb-2">
+                  <div className="p-4 sm:p-6">
+                    <h3 className="text-xl sm:text-2xl font-bold text-neutral-800 mb-2">
                       {vehicle.vehicleName}
                     </h3>
 
-                    <div className="flex items-center gap-4 mb-4 text-neutral-600">
+                    <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4 text-neutral-600 flex-wrap">
                       <div className="flex items-center">
                         <FaUsers className="mr-2 text-teal-600" />
                         <span className="text-sm font-semibold">{vehicle.seatingCapacity} Seats</span>
@@ -251,13 +251,13 @@ const Fleet = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-teal-600 to-teal-800 text-white">
+      <section className="py-12 px-4 sm:py-16 bg-gradient-to-r from-teal-600 to-teal-800 text-white">
         <div className="container-custom text-center">
-          <h2 className="text-4xl font-bold mb-4">Need Help Choosing?</h2>
-          <p className="text-xl mb-8 text-teal-50">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-4">Need Help Choosing?</h2>
+          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-teal-50 px-4">
             Contact us and we'll help you select the perfect vehicle for your needs
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
             <Link
               to="/booking"
               className="bg-white text-teal-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-neutral-100 transition-all duration-300 shadow-xl"

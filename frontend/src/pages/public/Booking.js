@@ -291,35 +291,35 @@ const Booking = () => {
   return (
     <div className="min-h-screen pt-24">
       {/* Header Section */}
-      <section className="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">
+      <section className="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-12 px-4 sm:py-16">
         <div className="container-custom text-center">
-          <h1 className="text-5xl font-bold mb-4">Book Your India Tour from Hyderabad</h1>
-          <p className="text-xl text-teal-50">Bus & Tempo Traveller Booking | Hyderabad & Mahabubnagar to All India | Best Rates</p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 px-4">Book Your India Tour from Hyderabad</h1>
+          <p className="text-base sm:text-lg md:text-xl text-teal-50 px-4">Bus & Tempo Traveller Booking | Hyderabad & Mahabubnagar to All India | Best Rates</p>
         </div>
       </section>
 
       {/* Booking Form Section */}
-      <section className="py-16 bg-neutral-50">
+      <section className="py-12 px-4 sm:py-16 bg-neutral-50">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             {submitted && (
-              <div className="bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded-lg mb-8 animate-fadeIn">
-                <p className="font-semibold">✓ Thank you for your enquiry!</p>
-                <p className="text-sm mt-1">Email sent to admin & WhatsApp opened. Our team will contact you within 24 hours.</p>
+              <div className="bg-green-100 border border-green-400 text-green-700 px-4 sm:px-6 py-3 sm:py-4 rounded-lg mb-6 sm:mb-8 animate-fadeIn">
+                <p className="font-semibold text-sm sm:text-base">✓ Thank you for your enquiry!</p>
+                <p className="text-xs sm:text-sm mt-1">Email sent to admin & WhatsApp opened. Our team will contact you within 24 hours.</p>
               </div>
             )}
 
-            <div className="card p-8 md:p-12">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold text-neutral-800 mb-2">Enquiry Form</h2>
-                <p className="text-neutral-600">Please provide your travel details</p>
+            <div className="card p-5 sm:p-8 md:p-12">
+              <div className="text-center mb-6 sm:mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold text-neutral-800 mb-2">Enquiry Form</h2>
+                <p className="text-sm sm:text-base text-neutral-600">Please provide your travel details</p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
                 {/* Personal Information */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                   <div>
-                    <label className="block text-gray-700 font-semibold mb-2">
+                    <label className="block text-gray-700 font-semibold mb-2 text-sm sm:text-base">
                       Full Name <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -357,7 +357,7 @@ const Booking = () => {
 
                 {/* Email */}
                 <div>
-                  <label className="block text-neutral-700 font-semibold mb-2">
+                  <label className="block text-neutral-700 font-semibold mb-2 text-sm sm:text-base">
                     Email Address
                   </label>
                   <div className="relative">
@@ -376,7 +376,7 @@ const Booking = () => {
 
                 {/* Starting Point */}
                 <div>
-                  <label className="block text-neutral-700 font-semibold mb-2">
+                  <label className="block text-neutral-700 font-semibold mb-2 text-sm sm:text-base">
                     Starting Point <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -395,7 +395,7 @@ const Booking = () => {
 
                 {/* Ending Point */}
                 <div>
-                  <label className="block text-neutral-700 font-semibold mb-2">
+                  <label className="block text-neutral-700 font-semibold mb-2 text-sm sm:text-base">
                     Ending Point <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -413,28 +413,28 @@ const Booking = () => {
                 </div>
 
                 {/* Tour Destinations */}
-                <div className="bg-teal-50 border-2 border-teal-200 rounded-2xl p-6">
-                  <div className="flex justify-between items-center mb-4">
+                <div className="bg-teal-50 border-2 border-teal-200 rounded-2xl p-4 sm:p-6">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
                     <div>
-                      <h3 className="text-lg font-bold text-neutral-800">Tour Destinations (Optional)</h3>
-                      <p className="text-sm text-neutral-600">Add places you want to visit during your journey</p>
+                      <h3 className="text-base sm:text-lg font-bold text-neutral-800">Tour Destinations (Optional)</h3>
+                      <p className="text-xs sm:text-sm text-neutral-600">Add places you want to visit during your journey</p>
                     </div>
                     <button
                       type="button"
                       onClick={() => setTourDestinations([...tourDestinations, ''])}
-                      className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors flex items-center gap-2"
+                      className="bg-teal-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors flex items-center gap-2 text-sm sm:text-base w-full sm:w-auto justify-center"
                     >
                       <FaPlus /> Add Destination
                     </button>
                   </div>
                   
                   {tourDestinations.length === 0 ? (
-                    <p className="text-neutral-600 text-center py-4">No destinations added. Click "Add Destination" to include places you want to visit.</p>
+                    <p className="text-neutral-600 text-center py-4 text-xs sm:text-sm">No destinations added. Click "Add Destination" to include places you want to visit.</p>
                   ) : (
                     <div className="space-y-3">
                       {tourDestinations.map((dest, index) => (
-                        <div key={index} className="bg-white rounded-xl p-4 shadow-md flex items-center gap-4">
-                          <div className="w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
+                        <div key={index} className="bg-white rounded-xl p-3 sm:p-4 shadow-md flex items-center gap-3 sm:gap-4">
+                          <div className="w-7 h-7 sm:w-8 sm:h-8 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold text-xs sm:text-sm flex-shrink-0">
                             {index + 1}
                           </div>
                           <input
@@ -462,9 +462,9 @@ const Booking = () => {
                 </div>
 
                 {/* Travel Details */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                   <div>
-                    <label className="block text-neutral-700 font-semibold mb-2">
+                    <label className="block text-neutral-700 font-semibold mb-2 text-sm sm:text-base">
                       Start Date <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -482,7 +482,7 @@ const Booking = () => {
                   </div>
 
                   <div>
-                    <label className="block text-neutral-700 font-semibold mb-2">
+                    <label className="block text-neutral-700 font-semibold mb-2 text-sm sm:text-base">
                       End Date
                     </label>
                     <div className="relative">
@@ -502,7 +502,7 @@ const Booking = () => {
 
                 {/* Passengers */}
                 <div>
-                  <label className="block text-neutral-700 font-semibold mb-2">
+                  <label className="block text-neutral-700 font-semibold mb-2 text-sm sm:text-base">
                     Number of Passengers <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -523,8 +523,8 @@ const Booking = () => {
 
                 {/* Message */}
                 <div>
-                  <label className="block text-neutral-700 font-semibold mb-2">
-                    Additional Message {formData.message && <span className="text-sm text-neutral-500">({formData.message.length}/1000)</span>}
+                  <label className="block text-neutral-700 font-semibold mb-2 text-sm sm:text-base">
+                    Additional Message {formData.message && <span className="text-xs sm:text-sm text-neutral-500">({formData.message.length}/1000)</span>}
                   </label>
                   <textarea
                     name="message"
@@ -543,7 +543,7 @@ const Booking = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className={`btn-primary w-full md:w-auto px-12 py-4 text-lg ${
+                    className={`btn-primary w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg ${
                       loading ? 'opacity-50 cursor-not-allowed' : ''
                     }`}
                   >
@@ -557,38 +557,38 @@ const Booking = () => {
       </section>
 
       {/* Info Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 px-4 sm:py-16 bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <h2 className="section-title text-center mb-8">What Happens Next?</h2>
+            <h2 className="section-title text-center mb-6 sm:mb-8 px-4">What Happens Next?</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
               <div className="text-center">
-                <div className="bg-teal-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                <div className="bg-teal-600 text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-xl sm:text-2xl font-bold">
                   1
                 </div>
-                <h3 className="text-xl font-bold text-neutral-800 mb-2">We Receive Your Enquiry</h3>
-                <p className="text-neutral-600">
+                <h3 className="text-lg sm:text-xl font-bold text-neutral-800 mb-2">We Receive Your Enquiry</h3>
+                <p className="text-sm sm:text-base text-neutral-600">
                   Your enquiry is sent via email & WhatsApp instantly
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="bg-teal-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                <div className="bg-teal-600 text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-xl sm:text-2xl font-bold">
                   2
                 </div>
-                <h3 className="text-xl font-bold text-neutral-800 mb-2">We Contact You</h3>
-                <p className="text-neutral-600">
+                <h3 className="text-lg sm:text-xl font-bold text-neutral-800 mb-2">We Contact You</h3>
+                <p className="text-sm sm:text-base text-neutral-600">
                   Our team will call or message you within 24 hours
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="bg-teal-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                <div className="bg-teal-600 text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-xl sm:text-2xl font-bold">
                   3
                 </div>
-                <h3 className="text-xl font-bold text-neutral-800 mb-2">Confirm & Travel</h3>
-                <p className="text-neutral-600">
+                <h3 className="text-lg sm:text-xl font-bold text-neutral-800 mb-2">Confirm & Travel</h3>
+                <p className="text-sm sm:text-base text-neutral-600">
                   Confirm your booking and enjoy your journey
                 </p>
               </div>
@@ -598,15 +598,15 @@ const Booking = () => {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-16 bg-gradient-to-r from-teal-600 to-teal-800 text-white">
+      <section className="py-12 px-4 sm:py-16 bg-gradient-to-r from-teal-600 to-teal-800 text-white">
         <div className="container-custom text-center">
-          <h2 className="text-4xl font-bold mb-4">Need Immediate Assistance?</h2>
-          <p className="text-xl mb-8 text-teal-50">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-4">Need Immediate Assistance?</h2>
+          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-teal-50 px-4">
             Call us directly for instant booking confirmation
           </p>
           <Link
             to="/contact"
-            className="bg-white text-teal-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-neutral-100 transition-all duration-300 shadow-xl inline-block"
+            className="bg-white text-teal-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-neutral-100 transition-all duration-300 shadow-xl inline-block"
           >
             View Contact Details
           </Link>
