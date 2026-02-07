@@ -48,3 +48,7 @@ backend/uploads/
 # OS
 .DS_Store
 Thumbs.db
+
+# Documentation - ignore all MD files except README
+*.md
+!README.md
