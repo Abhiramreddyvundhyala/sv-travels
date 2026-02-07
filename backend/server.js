@@ -116,6 +116,17 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'SV Travels API is running' });
 });
 
+// Serve static files from frontend build
+const frontendBuildPath = path.join(__dirname, '..', 'frontend', 'build');
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(frontendBuildPath));
+  
+  // Handle React routing, return all requests to React app
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendBuildPath, 'index.html'));
+  });
+}
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
