@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes, FaBus } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
   const location = useLocation();
+  const navigate = useNavigate();
   const { isAuthenticated, logout } = useAuth();
 
   useEffect(() => {
@@ -22,6 +24,22 @@ const Navbar = () => {
   const isAdminPage = location.pathname.startsWith('/admin');
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const handleLogoClick = (e) => {
+    if (!isAdminPage) {
+      e.preventDefault();
+      const newCount = clickCount + 1;
+      setClickCount(newCount);
+      
+      if (newCount === 5) {
+        navigate('/admin/login');
+        setClickCount(0);
+      } else {
+        // Reset counter after 2 seconds of no clicks
+        setTimeout(() => setClickCount(0), 2000);
+      }
+    }
+  };
 
   const navLinks = isAdminPage ? [
     { path: '/admin/dashboard', label: 'Dashboard' },
@@ -44,7 +62,11 @@ const Navbar = () => {
       <div className="container-custom">
         <div className="flex justify-between items-center py-5">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 sm:space-x-3 group flex-shrink-0">
+          <Link 
+            to={isAdminPage ? "/" : "#"} 
+            onClick={handleLogoClick}
+            className="flex items-center space-x-2 sm:space-x-3 group flex-shrink-0"
+          >
             <div className="bg-gradient-to-br from-teal-500 to-teal-600 p-2 sm:p-3 rounded-2xl group-hover:from-teal-600 group-hover:to-teal-700 transition-all duration-300 shadow-lg group-hover:shadow-xl transform group-hover:scale-110">
               <FaBus className="text-white text-2xl sm:text-3xl" />
             </div>
@@ -70,20 +92,13 @@ const Navbar = () => {
               </Link>
             ))}
             
-            {isAdminPage && isAuthenticated ? (
+            {isAdminPage && isAuthenticated && (
               <button
                 onClick={logout}
                 className="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2.5 rounded-xl font-semibold hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 Logout
               </button>
-            ) : !isAdminPage && (
-              <Link
-                to="/admin/login"
-                className="bg-gradient-to-r from-teal-600 to-teal-700 text-white px-6 py-2.5 rounded-xl font-semibold hover:from-teal-700 hover:to-teal-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-              >
-                Admin Login
-              </Link>
             )}
           </div>
 
@@ -115,7 +130,7 @@ const Navbar = () => {
                 </Link>
               ))}
               
-              {isAdminPage && isAuthenticated ? (
+              {isAdminPage && isAuthenticated && (
                 <button
                   onClick={() => {
                     logout();
@@ -125,14 +140,6 @@ const Navbar = () => {
                 >
                   Logout
                 </button>
-              ) : !isAdminPage && (
-                <Link
-                  to="/admin/login"
-                  onClick={toggleMenu}
-                  className="bg-gradient-to-r from-teal-600 to-teal-700 text-white px-4 py-2 rounded-xl font-medium hover:from-teal-700 hover:to-teal-800 transition-all text-center shadow-lg"
-                >
-                  Admin
-                </Link>
               )}
             </div>
           </div>
