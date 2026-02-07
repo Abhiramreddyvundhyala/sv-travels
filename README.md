@@ -145,10 +145,10 @@ JWT_SECRET=your_secret_key_change_this_in_production
 JWT_EXPIRE=30d
 
 # Contact Details (Optional - can be updated from admin panel)
-CONTACT_PHONE=+91-99631 07531
-WHATSAPP_NUMBER=919963107531
-CONTACT_EMAIL=svtravelsonline@gmail.com
-OFFICE_ADDRESS=Bangalore, Karnataka, India
+CONTACT_PHONE=
+WHATSAPP_NUMBER=
+CONTACT_EMAIL=
+OFFICE_ADDRESS=
 ```
 
 ### Step 4: Setup Frontend
@@ -180,12 +180,10 @@ node server.js
 
 Then, register an admin account using an API tool like Postman or curl:
 ```bash
-# POST request to http://localhost:5000/api/admin/register
+# POST request to 
 # Body (JSON):
 {
-  "username": "admin",
-  "email": "svtravelsonline@gmail.com",
-  "password": "admin123"
+
 }
 ```
 
@@ -218,8 +216,8 @@ The application will be available at:
 
 1. Navigate to: http://localhost:3000/admin/login
 2. Login with credentials:
-   - Username: `admin` (or the one you created)
-   - Password: `admin123` (or the one you created)
+   - Username:
+   - Password:
 
 ## 📝 Usage Guide
 
